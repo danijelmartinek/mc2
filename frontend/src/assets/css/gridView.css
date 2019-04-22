@@ -1,0 +1,318 @@
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body{
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  /* ---- Container sizing ---- */
+  
+  .dcontainer{
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  @media only screen and (min-width: 710px) {
+    .dcontainer{
+      width: 95%;
+    }
+  }
+  
+  @media only screen and (min-width: 1070px) {
+    .dcontainer{
+      width: 90%;
+    }
+  }
+  
+  @media only screen and (min-width: 1610px) {
+    .dcontainer{
+      width: 80%;
+    }
+  }
+  
+  @media only screen and (min-width: 2420px) {
+    .dcontainer{
+      width: 70%;
+    }
+  }
+  
+  /* ---- Container sizing end ---- */
+  
+  
+  .drow::after {
+      content: "";
+      clear: both;
+      display: table;
+  }
+  
+  .dcol {
+      width: 100%;
+      float: left;
+      padding: 15px;
+  }
+  
+  
+  /* ---- Sizing ---- */
+  
+  /* Smart Watch */
+  .xs-1 {width: 8.33%;}
+  .xs-2 {width: 16.66%;}
+  .xs-3 {width: 25%;}
+  .xs-4 {width: 33.33%;}
+  .xs-5 {width: 41.66%;}
+  .xs-6 {width: 50%;}
+  .xs-7 {width: 58.33%;}
+  .xs-8 {width: 66.66%;}
+  .xs-9 {width: 75%;}
+  .xs-10 {width: 83.33%;}
+  .xs-11 {width: 91.66%;}
+  .xs-12 {width: 100%;}
+  
+  /* Small Resolution Mobile */
+  @media only screen and (min-width: 320px) {
+      .s-1 {width: 8.33%;}
+      .s-2 {width: 16.66%;}
+      .s-3 {width: 25%;}
+      .s-4 {width: 33.33%;}
+      .s-5 {width: 41.66%;}
+      .s-6 {width: 50%;}
+      .s-7 {width: 58.33%;}
+      .s-8 {width: 66.66%;}
+      .s-9 {width: 75%;}
+      .s-10 {width: 83.33%;}
+      .s-11 {width: 91.66%;}
+      .s-12 {width: 100%;}
+  }
+  
+  /* Mobile */
+  @media only screen and (min-width: 470px) {
+      .sm-1 {width: 8.33%;}
+      .sm-2 {width: 16.66%;}
+      .sm-3 {width: 25%;}
+      .sm-4 {width: 33.33%;}
+      .sm-5 {width: 41.66%;}
+      .sm-6 {width: 50%;}
+      .sm-7 {width: 58.33%;}
+      .sm-8 {width: 66.66%;}
+      .sm-9 {width: 75%;}
+      .sm-10 {width: 83.33%;}
+      .sm-11 {width: 91.66%;}
+      .sm-12 {width: 100%;}
+  }
+  
+  /* Small Resolution Tablet */
+  @media only screen and (min-width: 710px) {
+      .m-1 {width: 8.33%;}
+      .m-2 {width: 16.66%;}
+      .m-3 {width: 25%;}
+      .m-4 {width: 33.33%;}
+      .m-5 {width: 41.66%;}
+      .m-6 {width: 50%;}
+      .m-7 {width: 58.33%;}
+      .m-8 {width: 66.66%;}
+      .m-9 {width: 75%;}
+      .m-10 {width: 83.33%;}
+      .m-11 {width: 91.66%;}
+      .m-12 {width: 100%;}
+  }
+  
+  /* Tablet & Laptop */
+  @media only screen and (min-width: 1070px) {
+      .ml-1 {width: 8.33%;}
+      .ml-2 {width: 16.66%;}
+      .ml-3 {width: 25%;}
+      .ml-4 {width: 33.33%;}
+      .ml-5 {width: 41.66%;}
+      .ml-6 {width: 50%;}
+      .ml-7 {width: 58.33%;}
+      .ml-8 {width: 66.66%;}
+      .ml-9 {width: 75%;}
+      .ml-10 {width: 83.33%;}
+      .ml-11 {width: 91.66%;}
+      .ml-12 {width: 100%;}
+  }
+  
+  /* Desktop */
+  @media only screen and (min-width: 1610px) {
+      .l-1 {width: 8.33%;}
+      .l-2 {width: 16.66%;}
+      .l-3 {width: 25%;}
+      .l-4 {width: 33.33%;}
+      .l-5 {width: 41.66%;}
+      .l-6 {width: 50%;}
+      .l-7 {width: 58.33%;}
+      .l-8 {width: 66.66%;}
+      .l-9 {width: 75%;}
+      .l-10 {width: 83.33%;}
+      .l-11 {width: 91.66%;}
+      .l-12 {width: 100%;}
+  }
+  
+  /* Large Resolution Desktop */
+  @media only screen and (min-width: 2420px) {
+      .xl-1 {width: 8.33%;}
+      .xl-2 {width: 16.66%;}
+      .xl-3 {width: 25%;}
+      .xl-4 {width: 33.33%;}
+      .xl-5 {width: 41.66%;}
+      .xl-6 {width: 50%;}
+      .xl-7 {width: 58.33%;}
+      .xl-8 {width: 66.66%;}
+      .xl-9 {width: 75%;}
+      .xl-10 {width: 83.33%;}
+      .xl-11 {width: 91.66%;}
+      .xl-12 {width: 100%;}
+  }
+  
+  /* Large Resolution Desktop */
+  @media only screen and (min-width: 3635px) {
+      .xxl-1 {width: 8.33%;}
+      .xxl-2 {width: 16.66%;}
+      .xxl-3 {width: 25%;}
+      .xxl-4 {width: 33.33%;}
+      .xxl-5 {width: 41.66%;}
+      .xxl-6 {width: 50%;}
+      .xxl-7 {width: 58.33%;}
+      .xxl-8 {width: 66.66%;}
+      .xxl-9 {width: 75%;}
+      .xxl-10 {width: 83.33%;}
+      .xxl-11 {width: 91.66%;}
+      .xxl-12 {width: 100%;}
+  }
+  
+  /* ---- Sizing end ---- */
+  
+  
+  /* ---- Positioning ---- */
+  
+  /* Smart Watch */
+  .offset-xs-0 {margin-left: 0%;}
+  .offset-xs-1 {margin-left: 8.33%;}
+  .offset-xs-2 {margin-left: 16.66%;}
+  .offset-xs-3 {margin-left: 25%;}
+  .offset-xs-4 {margin-left: 33.33%;}
+  .offset-xs-5 {margin-left: 41.66%;}
+  .offset-xs-6 {margin-left: 50%;}
+  .offset-xs-7 {margin-left: 58.33%;}
+  .offset-xs-8 {margin-left: 66.66%;}
+  .offset-xs-9 {margin-left: 75%;}
+  .offset-xs-10 {margin-left: 83.33%;}
+  .offset-xs-11 {margin-left: 91.66%;}
+  
+  /* Small Resolution Mobile */
+  @media only screen and (min-width: 320px) {
+      .offset-s-0 {margin-left: 0%;}
+      .offset-s-1 {margin-left: 8.33%;}
+      .offset-s-2 {margin-left: 16.66%;}
+      .offset-s-3 {margin-left: 25%;}
+      .offset-s-4 {margin-left: 33.33%;}
+      .offset-s-5 {margin-left: 41.66%;}
+      .offset-s-6 {margin-left: 50%;}
+      .offset-s-7 {margin-left: 58.33%;}
+      .offset-s-8 {margin-left: 66.66%;}
+      .offset-s-9 {margin-left: 75%;}
+      .offset-s-10 {margin-left: 83.33%;}
+      .offset-s-11 {margin-left: 91.66%;}
+  }
+  
+  /* Mobile */
+  @media only screen and (min-width: 470px) {
+      .offset-sm-0 {margin-left: 0%;}
+      .offset-sm-1 {margin-left: 8.33%;}
+      .offset-sm-2 {margin-left: 16.66%;}
+      .offset-sm-3 {margin-left: 25%;}
+      .offset-sm-4 {margin-left: 33.33%;}
+      .offset-sm-5 {margin-left: 41.66%;}
+      .offset-sm-6 {margin-left: 50%;}
+      .offset-sm-7 {margin-left: 58.33%;}
+      .offset-sm-8 {margin-left: 66.66%;}
+      .offset-sm-9 {margin-left: 75%;}
+      .offset-sm-10 {margin-left: 83.33%;}
+      .offset-sm-11 {margin-left: 91.66%;}
+  }
+  
+  /* Small Resolution Tablet */
+  @media only screen and (min-width: 710px) {
+      .offset-m-0 {margin-left: 0%;}
+      .offset-m-1 {margin-left: 8.33%;}
+      .offset-m-2 {margin-left: 16.66%;}
+      .offset-m-3 {margin-left: 25%;}
+      .offset-m-4 {margin-left: 33.33%;}
+      .offset-m-5 {margin-left: 41.66%;}
+      .offset-m-6 {margin-left: 50%;}
+      .offset-m-7 {margin-left: 58.33%;}
+      .offset-m-8 {margin-left: 66.66%;}
+      .offset-m-9 {margin-left: 75%;}
+      .offset-m-10 {margin-left: 83.33%;}
+      .offset-m-11 {margin-left: 91.66%;}
+  }
+  
+  /* Tablet & Laptop */
+  @media only screen and (min-width: 1070px) {
+      .offset-ml-0 {margin-left: 0%;}
+      .offset-ml-1 {margin-left: 8.33%;}
+      .offset-ml-2 {margin-left: 16.66%;}
+      .offset-ml-3 {margin-left: 25%;}
+      .offset-ml-4 {margin-left: 33.33%;}
+      .offset-ml-5 {margin-left: 41.66%;}
+      .offset-ml-6 {margin-left: 50%;}
+      .offset-ml-7 {margin-left: 58.33%;}
+      .offset-ml-8 {margin-left: 66.66%;}
+      .offset-ml-9 {margin-left: 75%;}
+      .offset-ml-10 {margin-left: 83.33%;}
+      .offset-ml-11 {margin-left: 91.66%;}
+  }
+  
+  /* Desktop */
+  @media only screen and (min-width: 1610px) {
+      .offset-l-0 {margin-left: 0%;}
+      .offset-l-1 {margin-left: 8.33%;}
+      .offset-l-2 {margin-left: 16.66%;}
+      .offset-l-3 {margin-left: 25%;}
+      .offset-l-4 {margin-left: 33.33%;}
+      .offset-l-5 {margin-left: 41.66%;}
+      .offset-l-6 {margin-left: 50%;}
+      .offset-l-7 {margin-left: 58.33%;}
+      .offset-l-8 {margin-left: 66.66%;}
+      .offset-l-9 {margin-left: 75%;}
+      .offset-l-10 {margin-left: 83.33%;}
+      .offset-l-11 {margin-left: 91.66%;}
+  }
+  
+  /* Large Resolution Desktop */
+  @media only screen and (min-width: 2420px) {
+      .offset-xl-0 {margin-left: 0%;}
+      .offset-xl-1 {margin-left: 8.33%;}
+      .offset-xl-2 {margin-left: 16.66%;}
+      .offset-xl-3 {margin-left: 25%;}
+      .offset-xl-4 {margin-left: 33.33%;}
+      .offset-xl-5 {margin-left: 41.66%;}
+      .offset-xl-6 {margin-left: 50%;}
+      .offset-xl-7 {margin-left: 58.33%;}
+      .offset-xl-8 {margin-left: 66.66%;}
+      .offset-xl-9 {margin-left: 75%;}
+      .offset-xl-10 {margin-left: 83.33%;}
+      .offset-xl-11 {margin-left: 91.66%;}
+  }
+  
+  /* Large Resolution Desktop */
+  @media only screen and (min-width: 3635px) {
+      .offset-xxl-0 {margin-left: 0%;}
+      .offset-xxl-1 {margin-left: 8.33%;}
+      .offset-xxl-2 {margin-left: 16.66%;}
+      .offset-xxl-3 {margin-left: 25%;}
+      .offset-xxl-4 {margin-left: 33.33%;}
+      .offset-xxl-5 {margin-left: 41.66%;}
+      .offset-xxl-6 {margin-left: 50%;}
+      .offset-xxl-7 {margin-left: 58.33%;}
+      .offset-xxl-8 {margin-left: 66.66%;}
+      .offset-xxl-9 {margin-left: 75%;}
+      .offset-xxl-10 {margin-left: 83.33%;}
+      .offset-xxl-11 {margin-left: 91.66%;}
+  }
+  
+  /* ---- Positioning end ---- */
