@@ -2,24 +2,24 @@
   <div id="sliderTwo" class="gridSelectContainer" v-touch:swipe.right="slideMinus">
     <div class="drow">
       <div class="dcol s-12 m-6 gridSelect">
-        <p>
+        <div>
 			<fit-text>Ne znam koji fakultet upisati niti kojim zanimanjem se želim baviti</fit-text>
-        </p>
+        </div>
       </div>
       <div class="dcol s-12 m-6 gridSelect">
-        <p>
+        <div>
 			<fit-text>Znam koji fakultet upisati ali ne i kojim zanimanjem se želim baviti</fit-text>
-        </p>
+        </div>
       </div>
       <div class="dcol s-12 m-6 gridSelect">
-        <p>
+        <div>
 			<fit-text>Ne znam koji fakultet upisati ali znam kojim zanimanjem se želim baviti</fit-text>
-        </p>
+        </div>
       </div>
       <div class="dcol s-12 m-6 gridSelect">
-        <p>
+        <div>
 			<fit-text>Znam koji fakultet upisati i kojim zanimanjem se želim baviti</fit-text>
-        </p>
+        </div>
       </div>
     </div>
   </div>
@@ -42,57 +42,106 @@ export default {
 </script>
 
 <style scoped>
-#sliderTwo > div{
+/* #sliderTwo > div{
   position: relative;
   top: 50%;
   left: 50%;
+  
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
+} */
 
 .gridSelectContainer{
   width: 95%;
   margin: 0 auto;
-  overflow: scroll;
 }
 
 .gridSelect{
-	border: 2px solid blue;
-	padding: 0em 1em 0em 1em;
+	padding: 0.2em 2em 0.2em 2em;
 	text-align: center;
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: bold;
 	text-transform: uppercase;
-	line-height: 1em;
+  font-size: 1em;
 }
 
-.gridSelect > p{
-  border: 2px solid blue;
+.gridSelect > div{
+  background-color: #00008b;
+  color: #ffffff;
   padding: 1em;
-  font-size: 2em;
   border-radius: 1em;
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+  webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, current supported by Chrome and Opera */
 }
 
-@media only screen and (min-width: 320px) {
+.gridSelect > div:active{
+  background-color: #0000a3;
+}
+
+@media only screen and (min-width: 340px) {
   .gridSelectContainer{
     width: 90%;
   }
+
+  .gridSelect{
+    padding: 0.3em 1em 0.3em 1em;
+    font-size: 1.5em;
+  }
+  
 }
 
 @media only screen and (min-width: 710px) {
   .gridSelectContainer{
     width: 80%;
   }
+
+  .gridSelect{
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    font-size: 1.7em;
+  }
+
+  .gridSelect > div{
+    min-height: 150px;
+  }
 }
 
 @media only screen and (min-width: 1070px) {
   .gridSelectContainer{
-    width: 60%;
+    width: 65%;
+  }
+
+  .gridSelect{
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    font-size: 2em;
+  }
+
+  .gridSelect > div{
+    min-height: 150px;
   }
 }
 
 @media only screen and (min-width: 1610px) {
   .gridSelectContainer{
-    width: 40%;
+    width: 50%;
+  }
+
+  .gridSelect{
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    font-size: 2.1em;
+  }
+
+  .gridSelect > div{
+    min-height: 160px;
   }
 }
 </style>
