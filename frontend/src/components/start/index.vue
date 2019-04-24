@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import step1 from "@/components/stepper/Step1.vue"
-import step2 from "@/components/stepper/Step2.vue"
+import step1 from "@/components/start/Start.vue"
+import step2 from "@/components/start/Next.vue"
 
 export default {
 	name: 'home',
