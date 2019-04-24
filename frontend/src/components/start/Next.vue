@@ -1,5 +1,5 @@
 <template>
-  <div id="sliderTwo" class="gridSelectContainer" v-touch:swipe.right="slideMinus">
+  <div id="next" class="gridSelectContainer" v-touch:swipe.right="slideMinus">
     <div class="drow">
       <div class="dcol s-12 m-6 gridSelect">
         <div>
@@ -29,7 +29,7 @@
 import fitText from './../../assets/scripts/fitText/fitText.vue';
 
 export default {
-  name: 'step2',
+  name: 'next',
   components: {
       fitText,
   },

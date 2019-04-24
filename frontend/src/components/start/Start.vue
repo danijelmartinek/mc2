@@ -1,5 +1,5 @@
 <template>
-    <div id="sliderOne" v-touch:swipe.left="slidePlus">
+    <div id="start" v-touch:swipe.left="slidePlus">
             <div v-on:click="slidePlus">
                 <p>
                     Start
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'step1',
+  name: 'start',
   methods: {
       slidePlus() {
           this.$emit('stepSlidePlus')
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style scoped>
-#sliderOne {
+#start {
     height: 100%;
     position: relative;
     text-align: center;
@@ -28,7 +28,7 @@ export default {
     line-height: 20vw;
 }
 
-#sliderOne > div{
+#start > div{
     width: 55vw;
     height: 55vw;
     color: white;
@@ -50,7 +50,7 @@ export default {
     user-select: none; /* Non-prefixed version, current supported by Chrome and Opera */
 }
 
-#sliderOne > div > p{
+#start > div > p{
     font-family: 'Ubuntu', sans-serif;
     font-size: 2em;
     font-weight: bold;
@@ -63,39 +63,39 @@ export default {
     transform: translate(-50%, -50%);
 }
 
-#sliderOne > div:active{
+#start > div:active{
     width: 51vw;
     height: 51vw;
     transition: 0.1s;
 }
 
 @media only screen and (min-width: 470px) {
-    #sliderOne > div{
+    #start > div{
         width: 35vw;
         height: 35vw;
     }
 
-    #sliderOne > div > p{
+    #start > div > p{
         font-size: 2.5em;
     }
 
-    #sliderOne > div:active{
+    #start > div:active{
         width: 33vw;
         height: 33vw;
     }
 }
 
 @media only screen and (min-width: 1070px) {
-    #sliderOne > div{
+    #start > div{
         width: 20vw;
         height: 20vw;
     }
 
-    #sliderOne > div > p{
+    #start > div > p{
         font-size: 3em;
     }
 
-    #sliderOne > div:active{
+    #start > div:active{
         width: 19vw;
         height: 19vw;
     }

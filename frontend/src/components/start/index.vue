@@ -1,5 +1,5 @@
 <template>
-    <div id="slider">
+    <div id="start">
 		<transition-group tag="div" class="comp-slider" :name="transitionDirection">
 			<div v-for="n in [currentComp]" v-bind:key="n">
 				<component v-on:stepSlidePlus="slidePlus" v-on:stepSlideMinus="slideMinus" v-bind:is="compList[n]"></component>
@@ -9,20 +9,20 @@
 </template>
 
 <script>
-import step1 from "@/components/start/Start.vue"
-import step2 from "@/components/start/Next.vue"
+import start from "@/components/start/Start.vue"
+import next from "@/components/start/Next.vue"
 
 export default {
-	name: 'home',
+	name: 'start',
 	components: {
-		step1,
-		step2
+		start,
+		next
 	},
 	data() {
 		return {
 			message: 'Click for slide',
 			show: true,
-			compList: [step1, step2],
+			compList: [start, next],
 			currentComp: 0,
 			transitionDirection: 'slide'
 		}
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped>
-#slider {
+#start {
 	overflow: hidden;
 }
 
