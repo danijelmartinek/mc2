@@ -1,25 +1,25 @@
 <template>
-    <div id="selectedPath">
+    <div>
        <div id="toggleCategoryContainer">
-        <div id="toggleCategory">
-            <label class="select">
-                <input type="radio" checked="checked" @click="changeStepTo(1)" name="radio">
-                <span class="checkmark"></span>
-                <div class="text">{{ path.highSchool }}</div>
-            </label>
-            <div class="line"></div>
-            <label class="select">
-                <input type="radio" @click="changeStepTo(2)" name="radio">
-                <span class="checkmark"></span>
-                <div class="text">{{ path.college }}</div>
-            </label>
-            <div class="line"></div>
-            <label class="select">
-                <input type="radio" @click="changeStepTo(3)" name="radio">
-                <span class="checkmark"></span>
-                <div class="text">{{ path.profession }}</div>
-            </label>
-        </div>
+          <div id="toggleCategory">
+              <label class="select">
+                  <input type="radio" checked="checked" @click="changeStepTo(0)" name="radio">
+                  <span class="checkmark"></span>
+                  <div class="text">{{ path.skola.naziv }}</div>
+              </label>
+              <div class="line"></div>
+              <label class="select">
+                  <input type="radio" @click="changeStepTo(1)" name="radio">
+                  <span class="checkmark"></span>
+                  <div class="text">{{ path.fakultet.naziv }}</div>
+              </label>
+              <div class="line"></div>
+              <label class="select">
+                  <input type="radio" @click="changeStepTo(2)" name="radio">
+                  <span class="checkmark"></span>
+                  <div class="text">{{ path.zanimanje.naziv }}</div>
+              </label>
+          </div>
         </div>
     </div>
 </template>
@@ -30,11 +30,11 @@ export default {
   props: ['path'],
 	data() {
 		return {
-			step: 1
+			step: 0
 		}
   },
   mounted(){
-    this.$emit('stepClicked', 1)
+    this.$emit('stepClicked', 0)
   },
 	methods: {
 		changeStepTo: function(s) {
@@ -51,8 +51,6 @@ export default {
 #selectedPath{
     width: 100%;
     height: 100%;
-
-    background-color: green;
 }
 
 @media only screen and (min-width: 1070px) {

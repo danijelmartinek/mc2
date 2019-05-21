@@ -1,0 +1,134 @@
+[
+    {
+      "id": "758394036592",
+      "userId": "048392057384",
+      "skola": {
+        "skolaId": "947386937582",
+        "naziv": "Gimnazija IZD",
+        "korisnaDobivenaZnanja": [],
+        "preporucenaZnanja": []
+      },
+      "fakultet": {
+        "fakultetId": "947395737582",
+        "naziv": "TVZ",
+        "korisnaDobivenaZnanja": [],
+        "preporucenaZnanja": [],
+        "upis": {
+          "smjer": "Racunarstvo",
+          "maturaPredmeti": [
+            {
+              "predmetId": "748395637582",
+              "naziv": "Matematika",
+              "razina": "A"
+            },
+            {
+              "predmetId": "748395637582",
+              "naziv": "Engleski jezik",
+              "razina": "B"
+            }
+          ],
+          "prijemni": false,
+          "portfolio": false
+        }
+      },
+      "zanimanje": {
+        "zanimanjeId": "749302758392",
+        "naziv": "Programer",
+        "zaposljavanje": {
+          "tvrtke": [],
+          "ustanove": []
+        },
+        "potrebnaTitula": "Diploma racunarstva",
+        "preporucenaZnanja": []
+      },
+      "hobiji": []
+    },
+    {
+        "id": "758394036592",
+        "userId": "048392057384",
+        "skola": {
+          "skolaId": "947386937582",
+          "naziv": "VIII. Gimnazija",
+          "korisnaDobivenaZnanja": [],
+          "preporucenaZnanja": []
+        },
+        "fakultet": {
+          "fakultetId": "947395737582",
+          "naziv": "FOI",
+          "korisnaDobivenaZnanja": [],
+          "preporucenaZnanja": [],
+          "upis": {
+            "smjer": "Racunarstvo",
+            "maturaPredmeti": [
+              {
+                "predmetId": "748395637582",
+                "naziv": "Matematika",
+                "razina": "A"
+              },
+              {
+                "predmetId": "748395637582",
+                "naziv": "Engleski jezik",
+                "razina": "B"
+              }
+            ],
+            "prijemni": false,
+            "portfolio": false
+          }
+        },
+        "zanimanje": {
+          "zanimanjeId": "749302758392",
+          "naziv": "Racunalni tehnicar",
+          "zaposljavanje": {
+            "tvrtke": [],
+            "ustanove": []
+          },
+          "potrebnaTitula": "Diploma racunarstva",
+          "preporucenaZnanja": []
+        },
+        "hobiji": []
+      },
+      {
+        "id": "758394036592",
+        "userId": "048392057384",
+        "skola": {
+          "skolaId": "947386937582",
+          "naziv": "X. Gimnazija",
+          "korisnaDobivenaZnanja": [],
+          "preporucenaZnanja": []
+        },
+        "fakultet": {
+          "fakultetId": "947395737582",
+          "naziv": "FER",
+          "korisnaDobivenaZnanja": [],
+          "preporucenaZnanja": [],
+          "upis": {
+            "smjer": "Racunarstvo",
+            "maturaPredmeti": [
+              {
+                "predmetId": "748395637582",
+                "naziv": "Matematika",
+                "razina": "A"
+              },
+              {
+                "predmetId": "748395637582",
+                "naziv": "Engleski jezik",
+                "razina": "B"
+              }
+            ],
+            "prijemni": false,
+            "portfolio": false
+          }
+        },
+        "zanimanje": {
+          "zanimanjeId": "749302758392",
+          "naziv": "Database administratordsadfsdag trdfhgtrhtrshgff",
+          "zaposljavanje": {
+            "tvrtke": [],
+            "ustanove": []
+          },
+          "potrebnaTitula": "Diploma racunarstva",
+          "preporucenaZnanja": []
+        },
+        "hobiji": []
+      } 
+  ]

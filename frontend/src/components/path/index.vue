@@ -1,135 +1,58 @@
 <template>
     <div id="myPath">
-        
-        <div id="pathSelectContainer">
+        <div id="pathSelect">
             <div class="heading">Odaberi fakultet i zanimanje</div>
-            <div id="pathSelect">
-                <div class="pathListElement pathSpacer" v-for="(path, i) in paths" :key="i" @click="changeSelectedPath(i)">
-                    <div>
-                        {{path.college}}
-                        <br>
-                        {{path.profession}}
-                    </div>
+            <div class="pathListElement pathSpacer" v-for="(path, i) in paths" :key="i" @click="changeSelectedPath(i)">
+                <div>
+                    {{path.fakultet.naziv}}
+                    <br>
+                    {{path.zanimanje.naziv}}
                 </div>
-                <div class="dummyPath"></div>
             </div>
+            <div class="dummyPath"></div>
         </div>
 
-        <pathSelector :path="selectedPath" @stepClicked="changeSelectedStep"></pathSelector>
+        <stepSelector v-if="dataLoaded" :path="selectedPath" @stepClicked="changeSelectedStep"></stepSelector>
+
+        <pathInfo ref="step" :data="selectedPath"></pathInfo>
 
 	</div>   
 </template>
 
 <script>
-import pathSelector from "@/components/path/PathSelector.vue"
+import stepSelector from "@/components/path/StepSelector.vue"
+import pathInfo from "@/components/path/PathInfo.vue"
+
+import json from './data.json'
 
 export default {
 	name: 'myPath',
 	components: {
-		pathSelector
+        stepSelector,
+        pathInfo
 	},
 	data() {
 		return {
-            currentSelectedPathIndex: 1,
-            selectedPath: {
-                highSchool: "Gimnazija",
-                college: "TVZ",
-                profession: "Programmer"
-            },
+            dataLoaded: false,
+            currentSelectedPathIndex: 0,
+            selectedPath: {},
             selectedStep: {},
-            selectedStepNumber: 1,
-			paths: [
-                {
-                    highSchool: "Gimnazija IZD",
-                    college: "TVZ",
-                    profession: "Programmer"
-                },
-                {
-                    highSchool: "Gimnazija IZD",
-                    college: "Filozofski fakultet",
-                    profession: "povjesničar"
-                },
-                {
-                    highSchool: "Gimnazija IZD",
-                    college: "FSB",
-                    profession: "Inžinjer aeronautike"
-                },
-                {
-                    highSchool: " IZD",
-                    college: "TVZ",
-                    profession: "Programmer"
-                },
-                {
-                    highSchool: "Gimnazija IZD",
-                    college: "Filozofski fakultet",
-                    profession: "povjesničar"
-                },
-                {
-                    highSchool: "Gimnazija IZD",
-                    college: "FSB",
-                    profession: "Inžinjer aeronautike"
-                },
-                {
-                    highSchool: "Gimnazija IZD",
-                    college: "TVZ",
-                    profession: "Programmer"
-                },
-                {
-                    highSchool: "Gimnazija IZD",
-                    college: "Filozofski fakultet",
-                    profession: "povjesničar"
-                },
-                {
-                    highSchool: "Gimnazija IZD",
-                    college: "FSB",
-                    profession: "Inžinjer aeronautike"
-                },
-                {
-                    highSchool: "Gimnazija IZD",
-                    college: "TVZ",
-                    profession: "Programmer"
-                },
-                {
-                    highSchool: "Gimnazija IZD",
-                    college: "Filozofski fakultet",
-                    profession: "povjesničar"
-                },
-                {
-                    highSchool: "Gimnazija IZD",
-                    college: "FSB",
-                    profession: "Inžinjer aeronautike"
-                }
-            ]
+			paths: json
 		}
     },
     mounted() {
         this.selectPathStyle(0)
+        this.selectedPath = this.paths[0]
+        this.dataLoaded = true
     },
 	methods: {
         changeSelectedPath: function(index) {
             this.selectedPath = this.paths[index]
-
-            if(this.selectedStepNumber == 1){
-                this.selectedStep = this.selectedPath.highSchool
-            } else if(this.selectedStepNumber == 2) {
-                this.selectedStep = this.selectedPath.college
-            } else if(this.selectedStepNumber == 3) {
-                this.selectedStep = this.selectedPath.profession
-            }
-
             this.selectPathStyle(index)
         },
-        changeSelectedStep: function(s) {
-            this.selectedStepNumber = s
-            if(s == 1){
-                this.selectedStep = this.selectedPath.highSchool
-            } else if(s == 2) {
-                this.selectedStep = this.selectedPath.college
-            } else if(s == 3) {
-                this.selectedStep = this.selectedPath.profession
-            }
 
-            console.log(this.selectedStep)
+        changeSelectedStep: function(s) {
+            this.$refs.step.changeStep(s)
         },
 
         selectPathStyle(index){
@@ -145,32 +68,29 @@ export default {
 </script>
 
 <style scoped>
-#pathSelectContainer{
-    width: 100%;
-    padding: 0.2em 0em 0.2em 0em;
-
-    background-color: #0a2155;
-}
-
-#pathSelectContainer .heading{
-    padding: 1em;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #fff;
-}
 
 #pathSelect{
+    position: fixed;
     display: inline-block;
     width: 100%;
-    height: 20vh;
+    height: 20%;
     padding: 0.2em 0em 0.2em 0em;
     overflow-y: hidden;
     overflow-x: scroll;
     white-space: nowrap;
 
     background-color: #0a2155;
+}
+
+#pathSelect .heading{
+    display: none;
+    padding: 2em 1em 2em 1em;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    white-space: normal;
 }
 
 /* width */
@@ -194,6 +114,7 @@ export default {
 }
 
 .pathListElement{
+    font-size: 2.5vh;
     display: inline-block;
     margin: 1em 0.5em 1em 0.5em;
     padding: 1em;
@@ -233,12 +154,6 @@ export default {
 
 @media only screen and (min-width: 1070px) {
 
-    #pathSelectContainer{
-        position: fixed;
-        width: 20%;
-        padding: 1em 0em 1em 0em;
-    }
-
     #pathSelect{
         position: fixed;
         width: 20%;
@@ -252,9 +167,15 @@ export default {
         width: 8px;
     }
 
+    #pathSelect .heading{
+        display: block;
+    }
+
     .pathListElement{
         display: block;
         width: 95%;
+        font-size: 1em;
+        white-space: normal;
     }
 
     .pathListElement > div {
