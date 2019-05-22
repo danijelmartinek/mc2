@@ -52,7 +52,7 @@ export default {
       let t = this
       setTimeout(function(){
         t.changeCheckedPlus()
-      }, 500);
+      }, 0);
     },
 
     changeStepMinus() {
@@ -61,7 +61,7 @@ export default {
       let t = this
       setTimeout(function(){
         t.changeCheckedMinus()
-      }, 500);
+      }, 0);
     },
 
     changeCheckedPlus() {

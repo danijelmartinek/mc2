@@ -12,14 +12,16 @@
             <div class="dummyPath"></div>
         </div>
 
-        <stepSelector ref="stepIndicator" v-if="dataLoaded" :path="selectedPath" @stepClicked="changeSelectedStep"></stepSelector>
+        <stepSelector ref="stepIndicator" v-if="dataLoaded" :path="data.selectedPath" @stepClicked="changeSelectedStep"></stepSelector>
 
-        <pathInfo ref="step" :data="selectedPath" v-on:stepSlidePlusEmitter="slidePlusEmitter" v-on:stepSlideMinusEmitter="slideMinusEmitter"></pathInfo>
+        <pathInfo ref="step" :data="data" v-on:stepSlidePlusEmitter="slidePlusEmitter" v-on:stepSlideMinusEmitter="slideMinusEmitter"></pathInfo>
 
 	</div>   
 </template>
 
 <script>
+import axios from 'axios'
+
 import stepSelector from "@/components/path/StepSelector.vue"
 import pathInfo from "@/components/path/PathInfo.vue"
 
@@ -33,21 +35,27 @@ export default {
 	},
 	data() {
 		return {
+            data: {
+                selectedPath: {},
+                selectedHighSchool: {},
+                selectedCollege: {},
+                selectedProfession: {}
+            },
+            stepDataArray: [],
             dataLoaded: false,
             currentSelectedPathIndex: 0,
-            selectedPath: {},
-            selectedStep: {},
 			paths: json
 		}
     },
     mounted() {
-        this.selectPathStyle(0)
-        this.selectedPath = this.paths[0]
-        this.dataLoaded = true
+        this.getStepData()
     },
 	methods: {
         changeSelectedPath: function(index) {
-            this.selectedPath = this.paths[index]
+            this.data.selectedPath = this.paths[index]
+            this.data.selectedHighSchool = this.stepDataArray[index].highSchool
+            this.data.selectedCollege = this.stepDataArray[index].college
+            this.data.selectedProfession = this.stepDataArray[index].profession
             this.selectPathStyle(index)
         },
 
@@ -70,6 +78,33 @@ export default {
 
         slideMinusEmitter() {
             this.$refs.stepIndicator.changeStepMinus()
+        },
+
+        getStepData() { //return object with highSchool, college and profession for each path
+            this.paths.forEach((path, i) => {
+                let reqData = {
+                    highSchool: path.skola.skolaId,
+                    college: path.fakultet.fakultetId,
+                    profession: path.zanimanje.zanimanjeId
+                }
+
+                let headers = {
+                    'Content-Type': 'application/json'
+                }
+
+                axios.post('/api/getstepdata', reqData, {headers: headers})
+                .then(res => {
+                    if(res.status == 200){
+                        this.stepDataArray.push(res.data)
+
+                        if(i == 0){
+                            this.selectPathStyle(0)
+                            this.changeSelectedPath(0)
+                            this.dataLoaded = true
+                        }
+                    }
+                })
+            })
         }
     }
 }

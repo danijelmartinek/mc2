@@ -77,7 +77,7 @@ export default {
 
 .slide-leave-active,
 .slide-enter-active {
-	transition: 0.5s;
+	transition: 0s;
 }
 .slide-enter {
 	transform: translate(100%, 0);
@@ -88,7 +88,7 @@ export default {
 
 .slideBack-leave-active,
 .slideBack-enter-active {
-	transition: 0.5s;
+	transition: 0s;
 }
 
 .slideBack-enter {
