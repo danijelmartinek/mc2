@@ -23,8 +23,16 @@ export default {
 
 <style>
 #professionStep{
-    position: fixed;
     width: 100%;
+    height: 62vh;
     background-color: blue;
+    overflow-y: scroll;
+}
+
+@media only screen and (min-width: 1070px) {
+
+    #professionStep{
+        height: 82vh;
+    }
 }
 </style>

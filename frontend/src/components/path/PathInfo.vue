@@ -15,7 +15,7 @@ import professionStep from "@/components/path/steps/ProfessionStep.vue"
 
 export default {
     name: 'start',
-    props: [ 'data'],
+    props: ['data'],
 	components: {
 		highSchoolStep,
         collegeStep,
@@ -43,11 +43,13 @@ export default {
         
 		slidePlus(){
 			this.transitionDirection = 'slide'
-			this.currentComp++
+            this.currentComp++
+            this.$emit('stepSlidePlusEmitter')
 		},
 		slideMinus(){
 			this.transitionDirection = 'slideBack'
-			this.currentComp--
+            this.currentComp--
+            this.$emit('stepSlideMinusEmitter')
 		}
 	}
 }
@@ -58,7 +60,7 @@ export default {
 	position: fixed;
     bottom: 0;
     right: 0;
-    height: 80%;
+    height: 62%;
     width: 100%;
     z-index: -100;
 
@@ -68,7 +70,7 @@ export default {
 @media only screen and (min-width: 1070px) {
 
     #pathInfo {
-        height: 80%;
+        height: 82%;
         width: 80%;
     }
 }

@@ -12,9 +12,9 @@
             <div class="dummyPath"></div>
         </div>
 
-        <stepSelector v-if="dataLoaded" :path="selectedPath" @stepClicked="changeSelectedStep"></stepSelector>
+        <stepSelector ref="stepIndicator" v-if="dataLoaded" :path="selectedPath" @stepClicked="changeSelectedStep"></stepSelector>
 
-        <pathInfo ref="step" :data="selectedPath"></pathInfo>
+        <pathInfo ref="step" :data="selectedPath" v-on:stepSlidePlusEmitter="slidePlusEmitter" v-on:stepSlideMinusEmitter="slideMinusEmitter"></pathInfo>
 
 	</div>   
 </template>
@@ -55,14 +55,22 @@ export default {
             this.$refs.step.changeStep(s)
         },
 
-        selectPathStyle(index){
+        selectPathStyle(index) {
 			let paths = document.getElementsByClassName("pathListElement")
 			
 			paths[this.currentSelectedPathIndex].classList.remove("pathSelected")
 			this.currentSelectedPathIndex = index
 			
 			paths[index].classList.add("pathSelected")
-		}
+        },
+        
+        slidePlusEmitter() {
+            this.$refs.stepIndicator.changeStepPlus()
+        },
+
+        slideMinusEmitter() {
+            this.$refs.stepIndicator.changeStepMinus()
+        }
     }
 }
 </script>
@@ -74,6 +82,7 @@ export default {
     display: inline-block;
     width: 100%;
     height: 20%;
+    top: 8%;
     padding: 0.2em 0em 0.2em 0em;
     overflow-y: hidden;
     overflow-x: scroll;
@@ -143,7 +152,7 @@ export default {
 
 #pathSelect > .pathSelected{
     background: #f54925;
-    border-radius: 15px;
+    border-radius: 12px;
     padding: 0.2em;
 }
 
