@@ -64,7 +64,7 @@ export default {
     width: 100%;
     z-index: -100;
 
-    background-color: red;
+    background-color: #0c317a;
 }
 
 @media only screen and (min-width: 1070px) {
