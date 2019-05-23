@@ -1,25 +1,25 @@
 <template>
-  <div id="next" class="gridSelectContainer" v-touch:swipe.right="slideMinus">
+  <div id="sliderTwo" class="gridSelectContainer" v-touch:swipe.right="slideMinus">
     <div class="drow">
       <div class="dcol s-12 m-6 gridSelect">
-        <div>
-			<fit-text>Ne znam koji fakultet upisati niti kojim zanimanjem se želim baviti</fit-text>
-        </div>
+        <router-link tag="div" to="/case/4">
+			    <fit-text>Ne znam koji fakultet upisati niti kojim zanimanjem se želim baviti</fit-text>
+        </router-link>
       </div>
       <div class="dcol s-12 m-6 gridSelect">
-        <div>
-			<fit-text>Znam koji fakultet upisati ali ne i kojim zanimanjem se želim baviti</fit-text>
-        </div>
+        <router-link tag="div" to="/case/3">
+			    <fit-text>Znam koji fakultet upisati ali ne i kojim zanimanjem se želim baviti</fit-text>
+        </router-link>
       </div>
       <div class="dcol s-12 m-6 gridSelect">
-        <div>
-			<fit-text>Ne znam koji fakultet upisati ali znam kojim zanimanjem se želim baviti</fit-text>
-        </div>
+        <router-link tag="div" to="/case/2">
+			    <fit-text>Ne znam koji fakultet upisati ali znam kojim zanimanjem se želim baviti</fit-text>
+        </router-link>
       </div>
       <div class="dcol s-12 m-6 gridSelect">
-        <div>
-			<fit-text>Znam koji fakultet upisati i kojim zanimanjem se želim baviti</fit-text>
-        </div>
+        <router-link tag="div" to="/case/1">
+			    <fit-text>Znam koji fakultet upisati i kojim zanimanjem se želim baviti</fit-text>
+        </router-link>
       </div>
     </div>
   </div>
@@ -42,9 +42,9 @@ export default {
 </script>
 
 <style scoped>
-/* #sliderTwo > div{
+#sliderTwo > div{
   position: relative;
-  top: 50%;
+  top: 40%;
   left: 50%;
   
   -ms-transform: translate(-50%, -50%);
@@ -52,7 +52,7 @@ export default {
   -moz-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-} */
+}
 
 .gridSelectContainer{
   width: 95%;

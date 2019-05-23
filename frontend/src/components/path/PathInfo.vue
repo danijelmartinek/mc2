@@ -70,7 +70,7 @@ export default {
 @media only screen and (min-width: 1070px) {
 
     #pathInfo {
-        height: 82%;
+        height: 72%;
         width: 80%;
     }
 }

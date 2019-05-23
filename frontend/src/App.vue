@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div class="nav-bar"></div>
-    <router-view/>
+    <div id="navbar"></div>
+    <div id="contentContainer"><router-view/></div>
   </div>
 </template>
 
@@ -19,10 +19,17 @@ html{
   padding: 0;
 }
 
-.nav-bar{
+#navbar{
   position: fixed;
   height: 8%;
   width: 100%;
   background-color: green;
+}
+
+#contentContainer{
+  position: fixed;
+  top: 8%;
+  height: 92%;
+  width: 100%;
 }
 </style>

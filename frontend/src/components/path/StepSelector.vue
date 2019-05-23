@@ -184,7 +184,7 @@ export default {
     #toggleCategoryContainer{
       position: fixed;
       top: 8%;
-      height: 10vh;
+      height: 20vh;
       width: 80%;
     }
 
@@ -194,6 +194,11 @@ export default {
 
     .checkmark {
       height: 2em;
+    }
+
+    .text {
+      display: block;
+      font-size: 0.8em;
     }
 }
 </style>

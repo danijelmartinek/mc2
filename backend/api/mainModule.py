@@ -113,6 +113,7 @@ class mainAlgorithm:
             },
             "zanimanje": {
                 "zanimanjeId": self.odabir["zanimanjeId"],
+                "naziv": self.dohvacanjePodataka()["zanimanje"]["naziv"],
                 "zaposljavanje": {
                     "tvrtke": [],
                     "ustanove": []
