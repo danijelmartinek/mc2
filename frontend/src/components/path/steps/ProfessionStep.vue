@@ -1,8 +1,8 @@
 <template>
     <div id="professionStep" v-touch:swipe.right="slideMinus">
         <div class="viewContainer">
-            <h1>{{ data.selectedHighSchool.naziv }}</h1>
-            <h2>{{ data.selectedHighSchool.vrsta }}</h2>
+            <h1>{{ data.selectedProfession.naziv }}</h1>
+            <h2>{{ data.selectedProfession.kategorija }}</h2>
         </div>
 	</div>   
 </template>

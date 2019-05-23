@@ -8,8 +8,8 @@
             <h4 class="infoElementNested">{{ data.selectedCollege.visokoUciliste }}</h4>
             <div><span style="text-transform: capitalize;">{{ data.selectedCollege.razina }}</span> {{ data.selectedCollege.studij }}</div>
             <br><br>
-            <div class="infoElementNested">BROJ SEMESTARA: {{ data.selectedCollege.brojSemestara }}</div>
-            <div class="infoElementNested">BROJ ECTS BODOVA: {{ data.selectedCollege.brojBodova }}</div>
+            <div class="infoElementNested">BROJ SEMESTARA: {{ data.selectedCollege.brojSemestara.$numberInt }}</div>
+            <div class="infoElementNested">BROJ ECTS BODOVA: {{ data.selectedCollege.brojBodova.$numberInt }}</div>
             <accordion :accordionID="'acc-' + generateID()" label="Smjerovi" width="200px">
                 <div v-for="smjer in data.selectedCollege.smjerovi" :key="smjer._id">
                     <accordion :accordionID="'acc-' + generateID()" :label="smjer.naziv" width="220px">
@@ -23,19 +23,21 @@
                                 <div class="elementDivider"></div>
                             </div>
                         </div>
-                        <accordion :accordionID="'acc-' + generateID()" label="Upis" width="200px">
-                            <div>
-                                <div class="infoElement">POTREBNO POLAGANJE PRIJEMNOG ISPITA:  {{ ((smjer.upis.prijemni == true) ? 'DA' : 'NE') }}</div>
-                                <div class="infoElement">POTREBAN PORTFOLIO:  {{ ((smjer.upis.prijemni == true) ? 'DA' : 'NE') }}</div>
-                                <div >
-                                    <accordion :accordionID="'acc-' + generateID()" label="MATURA" width="200px">
-                                        <div v-for="predmetMature in smjer.upis.maturaPredmeti" :key="predmetMature._id">
-                                            <div class="infoElement">{{ predmetMature.naziv }} {{ ((predmetMature.razina[0]) ? '- ' + predmetMature.razina + ' razina' : '') }}</div>
-                                        </div>
-                                    </accordion>
+                        <div class="infoElement">
+                            <accordion :accordionID="'acc-' + generateID()" label="Upis" width="200px">
+                                <div>
+                                    <div class="infoElement">POTREBNO POLAGANJE PRIJEMNOG ISPITA:  {{ ((smjer.upis.prijemni == true) ? 'DA' : 'NE') }}</div>
+                                    <div class="infoElement">POTREBAN PORTFOLIO:  {{ ((smjer.upis.prijemni == true) ? 'DA' : 'NE') }}</div>
+                                    <div class="infoElement">
+                                        <accordion :accordionID="'acc-' + generateID()" label="MATURA" width="200px">
+                                            <div v-for="predmetMature in smjer.upis.maturaPredmeti" :key="predmetMature._id">
+                                                <div class="infoElement">{{ predmetMature.naziv }} {{ ((predmetMature.razina[0]) ? '- ' + predmetMature.razina + ' razina' : '') }}</div>
+                                            </div>
+                                        </accordion>
+                                    </div>
                                 </div>
-                            </div>
-                        </accordion>
+                            </accordion>
+                        </div>
                     </accordion>
                 </div>
             </accordion>

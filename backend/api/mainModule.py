@@ -6,10 +6,9 @@ class mainAlgorithm:
         self.fakulteti = fakulteti
         self.zanimanja = zanimanja
         self.odabir = {
-            "skolaId": odabir["skolaId"],
-            "fakultetId": odabir["fakultetId"],
-            "smjerId": odabir["smjerId"],
-            "zanimanjeId": odabir["zanimanjeId"]
+            "skolaId": str(odabir["skolaId"]),
+            "fakultetId": str(odabir["fakultetId"]),
+            "zanimanjeId": str(odabir["zanimanjeId"])
         }
 
     def dohvacanjePodataka(self):
@@ -28,6 +27,8 @@ class mainAlgorithm:
         for i in self.zanimanja:
             if str(i["_id"]) == self.odabir["zanimanjeId"]:
                 zanimanje = i
+
+        print(self.odabir["fakultetId"])
 
         return {
             "skola": skola,
@@ -48,10 +49,9 @@ class mainAlgorithm:
         for j in self.fakulteti:
             if str(j["_id"]) == self.odabir["fakultetId"]:
                 for b in j["smjerovi"]:
-                    if str(b["id"]) == self.odabir["smjerId"]:
-                        for c in b["kolegiji"]:
-                            for d in c["dobivenaZnanja"]:
-                                dobivenaZnanjaFakultet.append(d["id"])
+                    for c in b["kolegiji"]:
+                        for d in c["dobivenaZnanja"]:
+                            dobivenaZnanjaFakultet.append(d["id"])
                 
         return potrebnaZnanjaZanimanje, dobivenaZnanjaFakultet
 
@@ -95,11 +95,7 @@ class mainAlgorithm:
     
 
     def izlaz(self):
-        def odaberiSmjer(id):
-            for i in self.dohvacanjePodataka()["fakultet"]["smjerovi"]:
-                if str(i["id"]) == self.odabir["smjerId"]:
-                    return i
-
+        
         izlazniObjekt = {
             "_id": ObjectId(),
             "userId": "",
@@ -114,7 +110,6 @@ class mainAlgorithm:
                 "naziv": self.dohvacanjePodataka()["fakultet"]["naziv"],
                 "korisnaDobivenaZnanja": self.usporedba_znanja_fakultet()["korisnaDobivenaZnanja"],
                 "preporucenaZnanja": [],
-                "upis": odaberiSmjer(id)["upis"]
             },
             "zanimanje": {
                 "zanimanjeId": self.odabir["zanimanjeId"],

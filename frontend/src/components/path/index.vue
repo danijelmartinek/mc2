@@ -25,8 +25,6 @@ import axios from 'axios'
 import stepSelector from "@/components/path/StepSelector.vue"
 import pathInfo from "@/components/path/PathInfo.vue"
 
-import json from './data.json'
-
 export default {
 	name: 'myPath',
 	components: {
@@ -44,11 +42,31 @@ export default {
             stepDataArray: [],
             dataLoaded: false,
             currentSelectedPathIndex: 0,
-			paths: json
+			paths: []
 		}
     },
     mounted() {
-        this.getStepData()
+
+        let pathData = {
+            "skolaId": "5cdebf15f88a0c5529953b7d",
+            "fakultetId": "5cdec1dde96cf8578794928c",
+            "zanimanjeId": "bf63bdd35bfea107408f28e1",
+            "interesi": []
+        }
+
+        let headers = {
+            'Content-Type': 'application/json'
+        }
+
+        axios.post('/api/gencasetwo', pathData, {headers: headers})
+        .then(res => {
+            if(res.status == 200){
+                console.log(res.data)
+                this.paths = res.data
+                // this.paths.push(res.data)
+                this.getStepData()
+            }
+        })
     },
 	methods: {
         changeSelectedPath: function(index) {
