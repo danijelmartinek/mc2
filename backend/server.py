@@ -9,6 +9,8 @@ from api.thirdModule import thirdAlgorithm
 import datetime
 from flask_cors import CORS
 
+import time
+
 
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
@@ -93,3 +95,43 @@ def sendStepData():
     }
     
     return JSONEncoder().response(res)
+
+@app.route('/gencaseone', methods = ['POST'])
+def generiranjePutova1():
+    req = request.get_json(force=True)
+    res = mainAlgorithm(skole, fakulteti, zanimanja, req).izlaz()
+    return JSONEncoder().response(res)
+
+@app.route('/gencasetwo', methods = ['POST'])
+def generiranjePutova2():
+    req = request.get_json(force=True)
+    listaPuteva = []
+    odgovarajuciFakulteti = secondAlgorithm(skole, fakulteti, zanimanja, req).izlaz()
+
+    for i in odgovarajuciFakulteti['listaFakulteta']:
+        put = mainAlgorithm(skole, fakulteti, zanimanja, {
+            'fakultetId' : i['idFakulteta'],
+            'skolaId' : odgovarajuciFakulteti['skolaId'],
+            'zanimanjeId' : odgovarajuciFakulteti['zanimanjeId']
+             }).izlaz()
+        
+        listaPuteva.append(put)
+
+    return JSONEncoder().response(listaPuteva)
+
+@app.route('/gencasethree', methods = ['POST'])
+def generiranjePutova3():
+    req = request.get_json(force=True)
+    listaPuteva = []
+    odgovarajucaZanimanja = thirdAlgorithm(skole, fakulteti, zanimanja, req).izlaz()
+
+    for i in odgovarajucaZanimanja['listaZanimanja']:
+        put = mainAlgorithm(skole, fakulteti, zanimanja, {
+            'fakultetId' : odgovarajucaZanimanja['fakultetId'],
+            'skolaId' : odgovarajucaZanimanja['skolaId'],
+            'zanimanjeId' : i['idZanimanja']
+             }).izlaz()
+        
+        listaPuteva.append(put)
+
+    return JSONEncoder().response(listaPuteva)
