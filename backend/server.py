@@ -4,6 +4,7 @@ import json
 from bson import ObjectId
 from api.mainModule import mainAlgorithm
 from api.secondModule import secondAlgorithm
+from api.thirdModule import thirdAlgorithm
 
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
@@ -36,8 +37,9 @@ osoba1 = {
 }
 p1 = mainAlgorithm(skole, fakulteti, zanimanja, osoba1)
 p2 = secondAlgorithm(skole, fakulteti, zanimanja, osoba1)
+p3 = thirdAlgorithm(skole, fakulteti, zanimanja, osoba1)
 
 @app.route('/')
 def hello():
-    return JSONEncoder().encode(p2.izlaz())
+    return JSONEncoder().encode(p3.izlaz())
     
