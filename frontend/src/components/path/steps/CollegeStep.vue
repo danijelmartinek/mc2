@@ -8,8 +8,8 @@
             <h4 class="infoElementNested">{{ data.selectedCollege.visokoUciliste }}</h4>
             <div><span style="text-transform: capitalize;">{{ data.selectedCollege.razina }}</span> {{ data.selectedCollege.studij }}</div>
             <br><br>
-            <div class="infoElementNested">BROJ SEMESTARA: {{ data.selectedCollege.brojSemestara.$numberInt }}</div>
-            <div class="infoElementNested">BROJ ECTS BODOVA: {{ data.selectedCollege.brojBodova.$numberInt }}</div>
+            <div class="infoElementNested">BROJ SEMESTARA: {{ data.selectedCollege.brojSemestara.numberInt }}</div>
+            <div class="infoElementNested">BROJ ECTS BODOVA: {{ data.selectedCollege.brojBodova.numberInt }}</div>
             <accordion :accordionID="'acc-' + generateID()" label="Smjerovi" width="200px">
                 <div v-for="smjer in data.selectedCollege.smjerovi" :key="smjer._id">
                     <accordion :accordionID="'acc-' + generateID()" :label="smjer.naziv" width="220px">
