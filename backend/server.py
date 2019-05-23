@@ -2,11 +2,13 @@ from flask import Flask, request, Response
 from flask_pymongo import PyMongo
 import json
 from bson import ObjectId
+
 from api.mainModule import mainAlgorithm
 from api.secondModule import secondAlgorithm
 from api.thirdModule import thirdAlgorithm
 import datetime
 from flask_cors import CORS
+
 
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
@@ -23,12 +25,19 @@ class JSONEncoder(json.JSONEncoder):
     def response(self, obj):
         return Response(self.encode(obj), mimetype='application/json')
 
+def konverzija(kolekcija):
+    lista = []
+    for x in kolekcija.find():
+        lista.append(x)
+    return lista
 
 app = Flask(__name__)
 
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
+
 app.config["MONGO_URI"] = "mongodb://localhost:27017/mc2"
+
 mongo = PyMongo(app)
   
 def konverzija(kolekcija):
@@ -82,6 +91,5 @@ def sendStepData():
         "college" : fakultet,
         "profession" : zanimanje
     }
-
-    return JSONEncoder().response(res)
     
+    return JSONEncoder().response(res)

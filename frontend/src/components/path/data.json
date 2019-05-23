@@ -1,0 +1,134 @@
+[
+    {
+      "id": "758394036592",
+      "userId": "048392057384",
+      "skola": {
+        "skolaId": "5cdfebb9838e13114c453f0d",
+        "naziv": "Gimnazija IZD",
+        "korisnaDobivenaZnanja": [],
+        "preporucenaZnanja": []
+      },
+      "fakultet": {
+        "fakultetId": "5cdfeb45838e13114c453f0c",
+        "naziv": "TVZ",
+        "korisnaDobivenaZnanja": [],
+        "preporucenaZnanja": [],
+        "upis": {
+          "smjer": "Racunarstvo",
+          "maturaPredmeti": [
+            {
+              "predmetId": "748395637582",
+              "naziv": "Matematika",
+              "razina": "A"
+            },
+            {
+              "predmetId": "748395637582",
+              "naziv": "Engleski jezik",
+              "razina": "B"
+            }
+          ],
+          "prijemni": false,
+          "portfolio": false
+        }
+      },
+      "zanimanje": {
+        "zanimanjeId": "749302758392",
+        "naziv": "Programer",
+        "zaposljavanje": {
+          "tvrtke": [],
+          "ustanove": []
+        },
+        "potrebnaTitula": "Diploma racunarstva",
+        "preporucenaZnanja": []
+      },
+      "hobiji": []
+    },
+    {
+        "id": "758394036592",
+        "userId": "048392057384",
+        "skola": {
+          "skolaId": "5cdf1b11ecb15432df695ab6",
+          "naziv": "VIII. Gimnazija",
+          "korisnaDobivenaZnanja": [],
+          "preporucenaZnanja": []
+        },
+        "fakultet": {
+          "fakultetId": "5cdfd3e3838e13114c453ef2",
+          "naziv": "FOI",
+          "korisnaDobivenaZnanja": [],
+          "preporucenaZnanja": [],
+          "upis": {
+            "smjer": "Racunarstvo",
+            "maturaPredmeti": [
+              {
+                "predmetId": "748395637582",
+                "naziv": "Matematika",
+                "razina": "A"
+              },
+              {
+                "predmetId": "748395637582",
+                "naziv": "Engleski jezik",
+                "razina": "B"
+              }
+            ],
+            "prijemni": false,
+            "portfolio": false
+          }
+        },
+        "zanimanje": {
+          "zanimanjeId": "749302758392",
+          "naziv": "Racunalni tehnicar",
+          "zaposljavanje": {
+            "tvrtke": [],
+            "ustanove": []
+          },
+          "potrebnaTitula": "Diploma racunarstva",
+          "preporucenaZnanja": []
+        },
+        "hobiji": []
+      },
+      {
+        "id": "758394036592",
+        "userId": "048392057384",
+        "skola": {
+          "skolaId": "5cdf1b11ecb15432df695ab6",
+          "naziv": "X. Gimnazija",
+          "korisnaDobivenaZnanja": [],
+          "preporucenaZnanja": []
+        },
+        "fakultet": {
+          "fakultetId": "5cdfd3e3838e13114c453ef2",
+          "naziv": "FER",
+          "korisnaDobivenaZnanja": [],
+          "preporucenaZnanja": [],
+          "upis": {
+            "smjer": "Racunarstvo",
+            "maturaPredmeti": [
+              {
+                "predmetId": "748395637582",
+                "naziv": "Matematika",
+                "razina": "A"
+              },
+              {
+                "predmetId": "748395637582",
+                "naziv": "Engleski jezik",
+                "razina": "B"
+              }
+            ],
+            "prijemni": false,
+            "portfolio": false
+          }
+        },
+        "zanimanje": {
+          "zanimanjeId": "749302758392",
+          "naziv": "Database administratordsadfsdag trdfhgtrhtrshgff",
+          "zaposljavanje": {
+            "tvrtke": [],
+            "ustanove": []
+          },
+          "potrebnaTitula": "Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar.Donec sed purus luctus, lacinia elit quis, porttitor justo. Etiam venenatis elit sit amet elit vehicula viverra. Integer id ipsum in lorem commodo aliquam at eget mauris. Sed placerat, velit eget scelerisque tempus, nisi massa convallis quam, rutrum vehicula nisi nulla vel magna. Fusce id velit pulvinar, viverra mi in, volutpat enim. Phasellus placerat lorem nunc, id elementum nunc accumsan sed. Praesent in sem mattis, ullamcorper lectus nec, porttitor purus. Mauris ut nisl nec magna scelerisque auctor non nec neque. Maecenas lectus tortor, pulvinar a congue nec, aliquam vitae neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer facilisis gravida pulvinar. ",
+          "preporucenaZnanja": []
+        },
+        "hobiji": []
+      } 
+  ]
