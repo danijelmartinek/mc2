@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="wrap-collabsible">
+        <div class="wrap-collabsible" :style="customStyleWrap">
             <input :id="accordionID" class="toggle" type="checkbox">
             <label :for="accordionID" class="lbl-toggle" :style="{'width': width}"><i class="arrow"></i><span>{{label}}</span></label>
             <div class="collapsible-content">
@@ -15,7 +15,7 @@
 <script>
 export default {
     name: 'accordion',
-    props: ['label', 'width', "accordionID"],
+    props: ['label', 'width', "accordionID", 'customStyleWrap'],
     mounted(){
 
         let myLabels = document.querySelectorAll('.lbl-toggle');
@@ -47,7 +47,6 @@ input[type='checkbox'] {
 .lbl-toggle {
     display: inline-block;
 
-    font-weight: bold;
     font-family: monospace;
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -55,8 +54,7 @@ input[type='checkbox'] {
 
     padding: 1rem;
 
-    color: #fff;
-    background: #0a2155;
+    color: #2C365D;
 
     cursor: pointer;
 
@@ -70,11 +68,11 @@ input[type='checkbox'] {
 }
 
 .lbl-toggle:hover {
-    color: #f54925;
+    color: #FF5E3A;
 }
 
 .lbl-toggle:hover .arrow {
-    border-color: #f54925;
+    border-color: #FF5E3A;
 }
 
 .lbl-toggle i {
@@ -82,7 +80,7 @@ input[type='checkbox'] {
     float: left;
     height: 100%;
     margin: 0.3em 0.7em 0.7em 0em;
-    border: solid #fff;
+    border: solid #2C365D;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
@@ -115,7 +113,7 @@ input[type='checkbox'] {
 }
 
 .collapsible-content .content-inner {
-    background: #0a2155;
+    background: #F2F2F0;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
     padding: .5rem 1rem;

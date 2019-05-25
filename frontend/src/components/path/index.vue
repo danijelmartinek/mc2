@@ -76,9 +76,6 @@ export default {
                 }
             })
         }
-
-        
-
     },
 	methods: {
         changeSelectedPath: function(index) {
@@ -309,7 +306,7 @@ export default {
         height: auto;
         margin-left: -20%;
         padding: 1.5em 0.5em 1.5em 0.5em;
-        border: 0.3em solid #FF5E3A;
+        border: 0.2em solid #FF5E3A;
         box-shadow: 0px 0px 15px 30px rgba(0, 0, 0, 0.2);
     }
 

@@ -37,28 +37,28 @@ export default {
 		this.$store.state.selectedOptions.slucajOdabira = 1
 
 		axios.get('/api/skole')
-        .then(res => {
-          if(res.status == 200){
-			this.skole = res.data
-			this.dataLoaded[0] = true
-          }
+		.then(res => {
+			if(res.status == 200){
+				this.skole = res.data
+				this.dataLoaded[0] = true
+			}
 		})
 
 		axios.get('/api/fakulteti')
-        .then(res => {
-          if(res.status == 200){
-			this.fakulteti = res.data
-			this.dataLoaded[1] = true
-          }
+		.then(res => {
+			if(res.status == 200){
+				this.fakulteti = res.data
+				this.dataLoaded[1] = true
+			}
 		})
 
 		axios.get('/api/zanimanja')
-        .then(res => {
-          if(res.status == 200){
-			this.zanimanja = res.data
-			this.dataLoaded[2] = true
-          }
-        })
+		.then(res => {
+			if(res.status == 200){
+				this.zanimanja = res.data
+				this.dataLoaded[2] = true
+			}
+		})
 	},
 	methods: {
 		onHighSchoolSelect(option) {
