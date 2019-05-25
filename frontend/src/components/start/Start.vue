@@ -51,7 +51,6 @@ export default {
 }
 
 #start > div > p{
-    font-family: 'Ubuntu', sans-serif;
     font-size: 2em;
     font-weight: bold;
     text-transform: uppercase;

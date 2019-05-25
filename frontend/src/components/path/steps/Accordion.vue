@@ -2,7 +2,7 @@
     <div>
         <div class="wrap-collabsible">
             <input :id="accordionID" class="toggle" type="checkbox">
-            <label :for="accordionID" class="lbl-toggle" :style="{'width': width}"><span>{{label}}</span></label>
+            <label :for="accordionID" class="lbl-toggle" :style="{'width': width}"><i class="arrow"></i><span>{{label}}</span></label>
             <div class="collapsible-content">
                 <div class="content-inner">
                     <slot></slot>
@@ -35,6 +35,7 @@ export default {
 </script>
 
 <style scoped>
+
 .wrap-collabsible {
     margin-bottom: 1.2rem 0;
 }
@@ -65,30 +66,37 @@ input[type='checkbox'] {
 
 .lbl-toggle > span {
     float: left;
+    text-align: left;
 }
 
 .lbl-toggle:hover {
     color: #f54925;
 }
 
-.lbl-toggle::before {
-    float: left;
-    content: ' ';
-    display: inline-block;
-    margin-top: 0.3em;
-
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 5px solid currentColor;
-    vertical-align: middle;
-    margin-right: .7rem;
-    transform: translateY(-2px);
-
-    transition: transform .2s ease-out;
+.lbl-toggle:hover .arrow {
+    border-color: #f54925;
 }
 
-.toggle:checked + .lbl-toggle::before {
-    transform: rotate(90deg) translateX(-3px);
+.lbl-toggle i {
+    display: block;
+    float: left;
+    height: 100%;
+    margin: 0.3em 0.7em 0.7em 0em;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+
+    transition: all 0.25s ease-out;
+}
+
+.lbl-toggle .arrow {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.toggle:checked + .lbl-toggle .arrow {
+    transform: rotate(45deg) translateX(-3px);
 }
 
 .collapsible-content {

@@ -27,9 +27,6 @@ export default {
 <style scoped>
 #highSchoolStep{
     width: 100%;
-    height: 62vh;
-    background-color: blue;
-    overflow-y: scroll;
 }
 
 .viewContainer{
@@ -39,9 +36,6 @@ export default {
 
 @media only screen and (min-width: 1070px) {
 
-    #highSchoolStep{
-        height: 82vh;
-    }
 }
 </style>
 

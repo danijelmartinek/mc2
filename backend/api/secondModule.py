@@ -21,8 +21,10 @@ class secondAlgorithm:
 
 
         for i in self.fakulteti:
-            if i["kategorija"] == odabranoZanimanjeKategorija:
-                filtriraniFakulteti.append(i)
+            for j in i['smjerovi']:
+                if j["kategorija"] == odabranoZanimanjeKategorija:
+                    if i not in filtriraniFakulteti:
+                        filtriraniFakulteti.append(i)
         
         return filtriraniFakulteti
     
@@ -33,7 +35,7 @@ class secondAlgorithm:
         for i in self.zanimanja:
             if str(i["_id"]) == self.odabir["zanimanjeId"]:
                 for a in i["potrebnaZnanja"]:
-                    potrebnaZnanjaZanimanje.append(a["id"])
+                    potrebnaZnanjaZanimanje.append(a["_id"])
         x = set(potrebnaZnanjaZanimanje)
                     
         
@@ -45,7 +47,7 @@ class secondAlgorithm:
 
                 for k in j["kolegiji"]:
                     for z in k["dobivenaZnanja"]:
-                        dobivenaZnanjaId.append(z["id"])
+                        dobivenaZnanjaId.append(z["_id"])
                 
                 for a in dobivenaZnanjaId:
                     dobivenaZnanjaFakulteta.append(a)

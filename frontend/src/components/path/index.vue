@@ -1,12 +1,15 @@
 <template>
     <div id="myPath">
+        <span class="bg"></span>
         <div id="pathSelect">
             <div class="heading">Odaberi fakultet i zanimanje</div>
-            <div class="pathListElement pathSpacer" v-for="(path, i) in paths" :key="i" @click="changeSelectedPath(i)">
+            <div class="elem pathListElement" v-for="(path, i) in paths" :key="i" @click="changeSelectedPath(i)">
                 <div>
-                    {{path.fakultet.naziv}}
-                    <br>
-                    {{path.zanimanje.naziv}}
+                    <span>
+                        {{path.fakultet.naziv}}
+                        <div class="step-divider"></div>
+                        {{path.zanimanje.naziv}}
+                    </span>
                 </div>
             </div>
             <div class="dummyPath"></div>
@@ -39,7 +42,6 @@ export default {
                 selectedCollege: {},
                 selectedProfession: {}
             },
-            stepDataArray: [],
             dataLoaded: false,
             currentSelectedPathIndex: 0,
 			paths: []
@@ -47,33 +49,43 @@ export default {
     },
     mounted() {
 
-        let pathData = {
-            "skolaId": "5cdebf15f88a0c5529953b7d",
-            "fakultetId": "5cdec1dde96cf8578794928c",
-            "zanimanjeId": "bf63bdd35bfea107408f28e1",
-            "interesi": []
-        }
 
         let headers = {
             'Content-Type': 'application/json'
         }
 
-        axios.post('/api/gencasetwo', pathData, {headers: headers})
-        .then(res => {
-            if(res.status == 200){
-                console.log(res.data)
-                this.paths = res.data
-                // this.paths.push(res.data)
-                this.getStepData()
+        let url = ""
+
+        if(this.$store.state.selectedOptions.slucajOdabira == 0){
+            this.$router.push('/')
+        } else {
+            
+            if(this.$store.state.selectedOptions.slucajOdabira == 1){
+                url = '/api/gencaseone'
+            } else if(this.$store.state.selectedOptions.slucajOdabira == 2){
+                url = '/api/gencasetwo'
+            } else if(this.$store.state.selectedOptions.slucajOdabira == 3){
+                url = '/api/gencasethree'
             }
-        })
+
+            axios.post(url, this.$store.state.selectedOptions, {headers: headers})
+            .then(res => {
+                if(res.status == 200){
+                    this.paths = res.data
+                    this.getStepData()
+                }
+            })
+        }
+
+        
+
     },
 	methods: {
         changeSelectedPath: function(index) {
             this.data.selectedPath = this.paths[index]
-            this.data.selectedHighSchool = this.stepDataArray[index].highSchool
-            this.data.selectedCollege = this.stepDataArray[index].college
-            this.data.selectedProfession = this.stepDataArray[index].profession
+            this.data.selectedHighSchool = this.paths[index].stepsData.highSchool
+            this.data.selectedCollege = this.paths[index].stepsData.college
+            this.data.selectedProfession = this.paths[index].stepsData.profession
             this.selectPathStyle(index)
         },
 
@@ -82,12 +94,14 @@ export default {
         },
 
         selectPathStyle(index) {
-			let paths = document.getElementsByClassName("pathListElement")
+			let paths = document.getElementsByClassName("elem")
 			
-			paths[this.currentSelectedPathIndex].classList.remove("pathSelected")
-			this.currentSelectedPathIndex = index
-			
-			paths[index].classList.add("pathSelected")
+            paths[this.currentSelectedPathIndex].classList.remove("pathListElementSelected")
+            paths[this.currentSelectedPathIndex].classList.add("pathListElement")
+            this.currentSelectedPathIndex = index
+            
+            paths[index].classList.remove("pathListElement")
+			paths[index].classList.add("pathListElementSelected")
         },
         
         slidePlusEmitter() {
@@ -113,7 +127,7 @@ export default {
                 axios.post('/api/getstepdata', reqData, {headers: headers})
                 .then(res => {
                     if(res.status == 200){
-                        this.stepDataArray.push(res.data)
+                        path.stepsData = res.data
 
                         if(i == 0){
                             this.selectPathStyle(0)
@@ -129,100 +143,132 @@ export default {
 </script>
 
 <style scoped>
-
+.bg{
+    z-index: -999;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url("https://svgshare.com/i/DFD.svg");
+	background-repeat: repeat;
+	background-size: 200px 200px;
+	opacity: 0.1;
+	filter: alpha(opacity=10);
+}
 #pathSelect{
     position: fixed;
-    display: inline-block;
     width: 100%;
-    height: 20%;
+    height: 20vh;
     top: 8%;
     padding: 0.2em 0em 0.2em 0em;
     overflow-y: hidden;
     overflow-x: scroll;
     white-space: nowrap;
+    text-align: center;
 
-    background-color: #0a2155;
+    background-color: #2C365D;
 }
 
 #pathSelect .heading{
     display: none;
     padding: 2em 1em 2em 1em;
-    font-family: 'Ubuntu', sans-serif;
     font-size: 1em;
     font-weight: bold;
     text-transform: uppercase;
-    color: #fff;
+    color: #F2F2F0;
     white-space: normal;
 }
 
-/* width */
-#pathSelect::-webkit-scrollbar {
-  height: 0px;
-}
-
-/* Track */
-#pathSelect::-webkit-scrollbar-track {
-  background: #001a4d; 
-}
- 
-/* Handle */
-#pathSelect::-webkit-scrollbar-thumb {
-  background: #2d3953; 
-}
-
-/* Handle on hover */
-#pathSelect::-webkit-scrollbar-thumb:hover {
-  background: #0a2155; 
-}
-
 .pathListElement{
-    font-size: 2.5vh;
+    height: 100%;
+    width: 80%;
+    font-size: 1em;
     display: inline-block;
-    margin: 1em 0.5em 1em 0.5em;
-    padding: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 .pathListElement > div{
+    text-align: center;
     display: inline-block;
     width: 100%;
-    height: 100%;
-    padding: 1.5em;
+    height: 80%;
+    padding: 0.5em;
 
-    color: #fff;
-    font-family: Roboto;
-    
+    color: #2C365D;
 
-    background-color: #0c2869;
-    border-radius: 10px;
+    background-color: #F2F2F0;
+    border-radius: 25px;
 
     cursor: pointer;
 }
 
-#pathSelect > .pathSpacer{
-    border-radius: 15px;
-    padding: 0.2em;
+.pathListElementSelected{
+    height: 100%;
+    width: 80%;
+    position: relative;
+    display: inline-block;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
-#pathSelect > .pathSelected{
-    background: #f54925;
-    border-radius: 12px;
-    padding: 0.2em;
+
+.pathListElement > div > span {
+    display: block;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.pathListElementSelected > div{
+    display: table;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
+    padding: 1em;
+
+    color: #2C365D;
+
+    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.5);
+
+    background-color: #F2F2F0;
+}
+
+.pathListElementSelected > div > span {
+    display: block;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.step-divider{
+    width: 60%;
+    height: 0.2em;
+    margin-left: 20%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: #FF5E3A;
 }
 
 .dummyPath{
     height: 20%;
-    background-color: #0a2155 !important;
 }
 
 @media only screen and (min-width: 1070px) {
 
     #pathSelect{
         position: fixed;
-        width: 20%;
-        height: 100%;
+        top: 12%;
+        width: 25%;
+        height: 85%;
         padding: 0.5em 0em 0.5em 0em;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
         overflow-y: scroll;
         overflow-x: hidden;
+        box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.2);
     }
 
     #pathSelect::-webkit-scrollbar {
@@ -235,24 +281,41 @@ export default {
 
     .pathListElement{
         display: block;
-        width: 95%;
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        padding: 1em 0.5em 1em 0.5em;
         font-size: 1em;
         white-space: normal;
     }
 
     .pathListElement > div {
         width: 100%;
-        height: 100%;
-        padding: 1.5em;
+        height: auto;
+        padding: 1em 0.5em 1em 0.5em;
+    }
 
-        color: #fff;
-        font-family: Roboto;
-        
+    .pathListElement > div > span {
+        display: inline;
+        position: static;
+    }
 
-        background-color: #0c2869;
-        border-radius: 10px;
+    .pathListElementSelected {
+        height: auto;
+    }
 
-        cursor: pointer;
+    .pathListElementSelected > div {
+        width: 140%;
+        height: auto;
+        margin-left: -20%;
+        padding: 1.5em 0.5em 1.5em 0.5em;
+        border: 0.3em solid #FF5E3A;
+        box-shadow: 0px 0px 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .pathListElementSelected > div > span {
+        display: inline;
+        position: static;
     }
 }
 </style>

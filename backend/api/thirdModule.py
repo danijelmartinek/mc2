@@ -6,20 +6,23 @@ class thirdAlgorithm:
         self.fakulteti = fakulteti
         self.zanimanja = zanimanja
         self.odabir = {
+            "smjerId": odabir["smjerId"],
             "skolaId": odabir["skolaId"],
             "fakultetId": odabir["fakultetId"]
         }
     def filter_zanimanja(self):
-        odabraniFakultetKategorija = ""
+        odabraniFakultetSmjerKategorija = ""
         filtriranaZanimanja = []
 
         for i in self.fakulteti:
             if str(i["_id"]) == self.odabir["fakultetId"]:
-                odabraniFakultetKategorija = i["kategorija"]
+                for j in i['smjerovi']:
+                    if str(j["_id"]) == self.odabir["smjerId"]:
+                        odabraniFakultetSmjerKategorija = j["kategorija"]
 
 
         for i in self.zanimanja:
-            if i["kategorija"] == odabraniFakultetKategorija:
+            if i["kategorija"] == odabraniFakultetSmjerKategorija:
                 filtriranaZanimanja.append(i)
         
         return filtriranaZanimanja
@@ -33,14 +36,14 @@ class thirdAlgorithm:
                 for a in i["smjerovi"]:
                     for b in a["kolegiji"]:
                         for c in b["dobivenaZnanja"]:
-                            dobivenaZnanjaFakulteta.append(c["id"])
+                            dobivenaZnanjaFakulteta.append(c["_id"])
         x = set(dobivenaZnanjaFakulteta)            
         
         for i in self.filter_zanimanja():
             potrebnaZnanjaZanimanje = []
 
             for j in i["potrebnaZnanja"]:
-                potrebnaZnanjaZanimanje.append(j["id"])
+                potrebnaZnanjaZanimanje.append(j["_id"])
                 
             y = set(potrebnaZnanjaZanimanje)
 

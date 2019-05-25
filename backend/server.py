@@ -51,31 +51,21 @@ def konverzija(kolekcija):
 skole = konverzija(mongo.db.skole)
 fakulteti = konverzija(mongo.db.fakulteti)
 zanimanja = konverzija(mongo.db.zanimanja)          
-osoba1 = {
-    "fakultetId": "5cdec1dde96cf85787949292",
-    "smjerId": "5cdec1dde96cf85787949293",
-    "skolaId": "5cdebf15f88a0c5529953b7d",
-    "zanimanjeId": "bf63bdd35bfea107408f28e1",
-    "interesi": []
-}
-p1 = mainAlgorithm(skole, fakulteti, zanimanja, osoba1)
-p2 = secondAlgorithm(skole, fakulteti, zanimanja, osoba1)
-p3 = thirdAlgorithm(skole, fakulteti, zanimanja, osoba1)
 
 @app.route('/fakulteti')
 def dohvatiFakultete():
-    fakulteti = JSONEncoder().response(fakulteti)
-    return fakulteti
+    fakultetiLista = JSONEncoder().response(fakulteti)
+    return fakultetiLista
 
 @app.route('/skole')
 def dohvatiSkole():
-    skole = JSONEncoder().response(skole)
-    return skole
+    skoleLista = JSONEncoder().response(skole)
+    return skoleLista
 
 @app.route('/zanimanja')
 def dohvatiZanimanja():
-    zanimanja = JSONEncoder().response(zanimanja)
-    return zanimanja
+    zanimanjaLista = JSONEncoder().response(zanimanja)
+    return zanimanjaLista
 
 @app.route('/getstepdata', methods = ['POST'])
 def sendStepData():
@@ -100,7 +90,7 @@ def sendStepData():
 def generiranjePutova1():
     req = request.get_json(force=True)
     res = mainAlgorithm(skole, fakulteti, zanimanja, req).izlaz()
-    return JSONEncoder().response(res)
+    return JSONEncoder().response([res])
 
 @app.route('/gencasetwo', methods = ['POST'])
 def generiranjePutova2():

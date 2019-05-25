@@ -28,8 +28,6 @@ class mainAlgorithm:
             if str(i["_id"]) == self.odabir["zanimanjeId"]:
                 zanimanje = i
 
-        print(self.odabir["fakultetId"])
-
         return {
             "skola": skola,
             "fakultet": fakultet,
@@ -43,7 +41,7 @@ class mainAlgorithm:
         for i in self.zanimanja:
             if str(i["_id"]) == self.odabir["zanimanjeId"]:
                 for a in i["potrebnaZnanja"]:
-                    potrebnaZnanjaZanimanje.append(a["id"])
+                    potrebnaZnanjaZanimanje.append(a["_id"])
                 
 
         for j in self.fakulteti:
@@ -51,7 +49,7 @@ class mainAlgorithm:
                 for b in j["smjerovi"]:
                     for c in b["kolegiji"]:
                         for d in c["dobivenaZnanja"]:
-                            dobivenaZnanjaFakultet.append(d["id"])
+                            dobivenaZnanjaFakultet.append(d["_id"])
                 
         return potrebnaZnanjaZanimanje, dobivenaZnanjaFakultet
 
@@ -63,7 +61,7 @@ class mainAlgorithm:
             if str(j["_id"]) == self.odabir["skolaId"]:
                 for c in j["predmeti"]:
                     for d in c["dobivenaZnanja"]:
-                        dobivenaZnanjaSkola.append(d["id"])
+                        dobivenaZnanjaSkola.append(d["_id"])
                 
         return potrebnaZnanjaZanimanje, dobivenaZnanjaSkola
 

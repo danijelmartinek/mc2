@@ -1,10 +1,11 @@
 <template>
     <div id="start">
-		<transition-group tag="div" class="comp-slider" :name="transitionDirection">
-			<div v-for="n in [currentComp]" v-bind:key="n">
-				<component v-on:stepSlidePlus="slidePlus" v-on:stepSlideMinus="slideMinus" v-bind:is="compList[n]"></component>
-			</div>
-		</transition-group>
+			<span class="bg"></span>
+			<transition-group tag="div" class="comp-slider" :name="transitionDirection">
+				<div v-for="n in [currentComp]" v-bind:key="n">
+					<component v-on:stepSlidePlus="slidePlus" v-on:stepSlideMinus="slideMinus" v-bind:is="compList[n]"></component>
+				</div>
+			</transition-group>
 	</div>   
 </template>
 
@@ -43,6 +44,18 @@ export default {
 <style scoped>
 #start {
 	overflow: hidden;
+}
+
+.bg{
+	z-index: -999;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url("https://svgshare.com/i/DFD.svg");
+	background-repeat: repeat;
+	background-size: 200px 200px;
+	opacity: 0.1;
+	filter: alpha(opacity=10);
 }
 
 .slide-leave-active,

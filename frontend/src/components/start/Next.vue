@@ -3,22 +3,22 @@
     <div class="drow">
       <div class="dcol s-12 m-6 gridSelect">
         <router-link tag="div" to="/case/4">
-			    <fit-text>Ne znam koji fakultet upisati niti kojim zanimanjem se želim baviti</fit-text>
+          <fit-text>Ne znam koji fakultet upisati niti kojim zanimanjem se želim baviti</fit-text>
         </router-link>
       </div>
       <div class="dcol s-12 m-6 gridSelect">
         <router-link tag="div" to="/case/3">
-			    <fit-text>Znam koji fakultet upisati ali ne i kojim zanimanjem se želim baviti</fit-text>
+          <fit-text>Znam koji fakultet upisati ali ne i kojim zanimanjem se želim baviti</fit-text>
         </router-link>
       </div>
       <div class="dcol s-12 m-6 gridSelect">
         <router-link tag="div" to="/case/2">
-			    <fit-text>Ne znam koji fakultet upisati ali znam kojim zanimanjem se želim baviti</fit-text>
+          <fit-text>Ne znam koji fakultet upisati ali znam kojim zanimanjem se želim baviti</fit-text>
         </router-link>
       </div>
       <div class="dcol s-12 m-6 gridSelect">
         <router-link tag="div" to="/case/1">
-			    <fit-text>Znam koji fakultet upisati i kojim zanimanjem se želim baviti</fit-text>
+          <fit-text>Znam koji fakultet upisati i kojim zanimanjem se želim baviti</fit-text>
         </router-link>
       </div>
     </div>
@@ -62,7 +62,6 @@ export default {
 .gridSelect{
 	padding: 0.2em 2em 0.2em 2em;
 	text-align: center;
-	font-family: 'Ubuntu', sans-serif;
 	font-weight: bold;
 	text-transform: uppercase;
   font-size: 1em;

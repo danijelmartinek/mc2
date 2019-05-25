@@ -27,9 +27,7 @@ export default {
 <style scoped>
 #professionStep{
     width: 100%;
-    height: 62vh;
-    background-color: blue;
-    overflow-y: scroll;
+    background-color: #F2F2F0;
 }
 
 .viewContainer{
@@ -39,8 +37,5 @@ export default {
 
 @media only screen and (min-width: 1070px) {
 
-    #professionStep{
-        height: 82vh;
-    }
 }
 </style>
