@@ -31,8 +31,10 @@ export default {
 #start > div{
     width: 55vw;
     height: 55vw;
-    color: white;
-    background-color: orange;
+    color: #F2F2F0;
+    background-color: #FF5E3A;
+    background-image: url("./../../assets/img/papyrus.png");
+    background-blend-mode: multiply;
     border-radius: 50%;
     cursor: pointer;
     
@@ -40,6 +42,7 @@ export default {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 30px 15px rgba(0, 0, 0, 0.2);
 
     -webkit-tap-highlight-color: transparent;
     webkit-touch-callout: none; /* iOS Safari */

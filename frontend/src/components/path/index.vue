@@ -17,7 +17,7 @@
 
         <stepSelector ref="stepIndicator" v-if="dataLoaded" :path="data.selectedPath" @stepClicked="changeSelectedStep"></stepSelector>
 
-        <pathInfo ref="step" :data="data" v-on:stepSlidePlusEmitter="slidePlusEmitter" v-on:stepSlideMinusEmitter="slideMinusEmitter"></pathInfo>
+        <pathInfo ref="step" :data="data" v-on:stepSlidePlusEmitter="slidePlusEmitter" v-on:stepSlideMinusEmitter="slideMinusEmitter" v-on:togglePathSelector="togglePathSelector"></pathInfo>
 
 	</div>   
 </template>
@@ -47,8 +47,14 @@ export default {
 			paths: []
 		}
     },
+    beforeMount() {
+        if(this.$store.state.routeHandler){
+            this.$router.go(this.$router.currentRoute)
+            this.$store.state.routeHandler = false
+        }
+    },
     mounted() {
-
+        this.$store.state.routeHandler = true
 
         let headers = {
             'Content-Type': 'application/json'
@@ -134,6 +140,18 @@ export default {
                     }
                 })
             })
+        },
+
+        togglePathSelector(reveal) {
+            let elem = document.getElementById("pathSelect")
+
+            if(reveal){
+                elem.style.top = 8 + "%"
+                this.$refs.stepIndicator.moveSelector(0)
+            } else {
+                elem.style.top = -28 + "%"
+                this.$refs.stepIndicator.moveSelector(1)
+            }
         }
     }
 }
@@ -161,6 +179,7 @@ export default {
     overflow-x: scroll;
     white-space: nowrap;
     text-align: center;
+    transition: 0.3s ease;
 
     background-color: #2C365D;
 }
@@ -215,6 +234,9 @@ export default {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .pathListElementSelected > div{
@@ -238,6 +260,9 @@ export default {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .step-divider{

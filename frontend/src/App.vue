@@ -1,13 +1,16 @@
 <template>
   <div id="app">
-    <div id="navbar"></div>
+    <navbar></navbar>
     <div id="contentContainer"><router-view/></div>
   </div>
 </template>
 
 <script>
+import navbar from './components/core/Navbar.vue'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: { navbar }
 }
 </script>
 
@@ -24,15 +27,6 @@ html{
   padding: 0;
 
   font-family: 'PublicSansRegular';
-}
-
-#navbar{
-  z-index: 999;
-  position: fixed;
-  height: 8%;
-  width: 100%;
-  background-color: #F2F2F0;
-  box-shadow: 0px 5px 30px 5px rgba(0, 0, 0, 0.1);
 }
 
 #contentContainer{

@@ -51,7 +51,7 @@ export default {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background-image: url("https://svgshare.com/i/DFD.svg");
+	background-image: url("./../../assets/img/iconsPattern.svg");
 	background-repeat: repeat;
 	background-size: 200px 200px;
 	opacity: 0.1;

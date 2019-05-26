@@ -29,7 +29,30 @@ export default {
 			currentComp: 0,
 			transitionDirection: 'slide'
 		}
-    },
+	},
+	mounted() {
+
+		//handling stepSelector hide on scroll
+		if(window.innerWidth < 1070){
+			let topOffset = 0
+			let t = this
+
+			let elem = document.getElementById("pathInfo")
+			elem.onscroll = function(e) {
+
+				if(topOffset < e.srcElement.scrollTop){
+					if(e.srcElement.scrollTop > 50){
+						elem.style.height = 77 + "%"
+						t.$emit('togglePathSelector', false)
+					}
+				} else if(e.srcElement.scrollTop < 10){
+					elem.style.height = 57 + "%"
+					t.$emit('togglePathSelector', true)
+				}
+				topOffset = e.srcElement.scrollTop
+			}
+		}
+	},
 	methods: {
         changeStep(step){
             if(step >  this.currentComp){
@@ -64,6 +87,7 @@ export default {
     width: 100%;
     z-index: -100;
 	overflow: auto;
+	transition: 0.3s ease;
 }
 
 .container{

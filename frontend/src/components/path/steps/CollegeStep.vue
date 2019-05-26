@@ -126,9 +126,9 @@ export default {
                 this.data.selectedCollege.smjerovi.forEach(s => {
                     s.kolegiji.forEach(k => {
                         k.dobivenaZnanja.forEach(znanje => {
-                            if(!(this.korisniPredmeti.includes(znanje.naziv) == true)){
+                            if(!(this.korisniPredmeti.includes(k.naziv) == true)){
                                 if(znanjeId == znanje._id){
-                                    this.korisniPredmeti.push(znanje.naziv)
+                                    this.korisniPredmeti.push(k.naziv)
                                 }
                             }
                         })

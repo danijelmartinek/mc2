@@ -1,11 +1,11 @@
 <template>
   <div id="sliderTwo" class="gridSelectContainer" v-touch:swipe.right="slideMinus">
     <div class="drow">
-      <div class="dcol s-12 m-6 gridSelect">
+      <!-- <div class="dcol s-12 m-6 gridSelect">
         <router-link tag="div" to="/case/4">
           <fit-text>Ne znam koji fakultet upisati niti kojim zanimanjem se želim baviti</fit-text>
         </router-link>
-      </div>
+      </div> -->
       <div class="dcol s-12 m-6 gridSelect">
         <router-link tag="div" to="/case/3">
           <fit-text>Znam koji fakultet upisati ali ne i kojim zanimanjem se želim baviti</fit-text>
@@ -16,7 +16,7 @@
           <fit-text>Ne znam koji fakultet upisati ali znam kojim zanimanjem se želim baviti</fit-text>
         </router-link>
       </div>
-      <div class="dcol s-12 m-6 gridSelect">
+      <div class="dcol s-12 offset-m-3 m-6 gridSelect">
         <router-link tag="div" to="/case/1">
           <fit-text>Znam koji fakultet upisati i kojim zanimanjem se želim baviti</fit-text>
         </router-link>
@@ -68,11 +68,14 @@ export default {
 }
 
 .gridSelect > div{
-  background-color: #00008b;
-  color: #ffffff;
+  background-color: #2C365D;
+  background-image: url("./../../assets/img/papyrus.png");
+  background-blend-mode: multiply;
+  color: #F2F2F0;
   padding: 1em;
   border-radius: 1em;
   cursor: pointer;
+  box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.2);
 
   -webkit-tap-highlight-color: transparent;
   webkit-touch-callout: none; /* iOS Safari */
@@ -84,7 +87,7 @@ export default {
 }
 
 .gridSelect > div:active{
-  background-color: #0000a3;
+  background-color: rgb(63, 77, 134);
 }
 
 @media only screen and (min-width: 340px) {
