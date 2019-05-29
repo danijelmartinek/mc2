@@ -29,11 +29,13 @@ import stepSelector from "@/components/path/StepSelector.vue"
 import pathInfo from "@/components/path/PathInfo.vue"
 
 export default {
-	name: 'myPath',
+    name: 'myPath',
+    
 	components: {
         stepSelector,
         pathInfo
-	},
+    },
+    
 	data() {
 		return {
             data: {
@@ -47,14 +49,18 @@ export default {
 			paths: []
 		}
     },
+
     beforeMount() {
+        //kod navigacije pomoću 'back' i 'forward' strelica, 
+        //prevencija slanja praznog objekta za generiranje puteva - validacija da prikaz puteva nije prazan objekt
         if(this.$store.state.routeHandler){
             this.$router.go(this.$router.currentRoute)
             this.$store.state.routeHandler = false
         }
     },
+
     mounted() {
-        this.$store.state.routeHandler = true
+        this.$store.state.routeHandler = true //učitana finalna ruta generiranja puteva
 
         let headers = {
             'Content-Type': 'application/json'
@@ -62,6 +68,7 @@ export default {
 
         let url = ""
 
+        //ovisno o odabranom slučaju, pokreće se određeni algoritam za generiranje puteva na serveru
         if(this.$store.state.selectedOptions.slucajOdabira == 0){
             this.$router.push('/')
         } else {
@@ -83,8 +90,9 @@ export default {
             })
         }
     },
+
 	methods: {
-        changeSelectedPath: function(index) {
+        changeSelectedPath: function(index) { //na promjenu puta, mijenjaju se podaci koji se šalju na komponentu za prikaz pojedinosti puta
             this.data.selectedPath = this.paths[index]
             this.data.selectedHighSchool = this.paths[index].stepsData.highSchool
             this.data.selectedCollege = this.paths[index].stepsData.college
@@ -92,11 +100,11 @@ export default {
             this.selectPathStyle(index)
         },
 
-        changeSelectedStep: function(s) {
+        changeSelectedStep: function(s) { //funkcija koja pokreće promjenu indikatora koraka puta (koraci puta = srednja škola, fakultet, zanimanje)
             this.$refs.step.changeStep(s)
         },
 
-        selectPathStyle(index) {
+        selectPathStyle(index) { //funkcija koja postavlja stil odabranog puta
 			let paths = document.getElementsByClassName("elem")
 			
             paths[this.currentSelectedPathIndex].classList.remove("pathListElementSelected")
@@ -108,14 +116,14 @@ export default {
         },
         
         slidePlusEmitter() {
-            this.$refs.stepIndicator.changeStepPlus()
+            this.$refs.stepIndicator.changeStepPlus() //funkcija koja pokreće promjenu koraka puta u naprijed
         },
 
         slideMinusEmitter() {
-            this.$refs.stepIndicator.changeStepMinus()
+            this.$refs.stepIndicator.changeStepMinus() //funkcija koja pokreće promjenu koraka puta u nazad
         },
 
-        getStepData() { //return object with highSchool, college and profession for each path
+        getStepData() { //vraća objekt sa školom, fakultetom i zanimanjem za svaki generirani put
             this.paths.forEach((path, i) => {
                 let reqData = {
                     highSchool: path.skola.skolaId,
@@ -142,14 +150,14 @@ export default {
             })
         },
 
-        togglePathSelector(reveal) {
+        togglePathSelector(reveal) { //na mobilnom telefonu omogućuje sakrivanje trake za odabir puteva na scroll
             let elem = document.getElementById("pathSelect")
 
             if(reveal){
-                elem.style.top = 8 + "%"
+                elem.style.transform = "translateY(0%)"
                 this.$refs.stepIndicator.moveSelector(0)
             } else {
-                elem.style.top = -28 + "%"
+                elem.style.transform = "translateY(-110%)"
                 this.$refs.stepIndicator.moveSelector(1)
             }
         }
@@ -163,12 +171,13 @@ export default {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background-image: url("https://svgshare.com/i/DFD.svg");
+	background-image: url("./../../assets/img/iconsPattern.svg");
 	background-repeat: repeat;
 	background-size: 200px 200px;
 	opacity: 0.1;
 	filter: alpha(opacity=10);
 }
+
 #pathSelect{
     position: fixed;
     width: 100%;
@@ -179,7 +188,7 @@ export default {
     overflow-x: scroll;
     white-space: nowrap;
     text-align: center;
-    transition: 0.3s ease;
+    transition: 0.5s;
 
     background-color: #2C365D;
 }

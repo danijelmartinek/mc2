@@ -67,25 +67,30 @@
 <script>
 // import axios from 'axios'
 
-import accordion from "@/components/path/steps/Accordion.vue"
+import accordion from "@/assets/scripts/accordion/Accordion.vue"
 
 export default {
     name: 'collegeStep',
+
     components: {
         accordion,
     },
+
     props:['data'],
+
 	data() {
 		return {
             korisniPredmeti: []
             // znanja: []
         }
     },
+
     watch: {
-        'data.selectedCollege._id':function() {
+        'data.selectedCollege._id':function() { //na promjenu puta, generiraju se korisni predmeti na tom fakultetu za budući posao
             this.getCourses()
         }
     },
+
     mounted() {
         this.getCourses()
 
@@ -102,24 +107,24 @@ export default {
 		// 	}
 		// })
     },
+
     methods: {
         slidePlus() {
-            this.$emit('stepSlidePlus')
+            this.$emit('stepSlidePlus') //funkcija koja prebacuje pogled na zanimanje
         },
 
         slideMinus() {
-            this.$emit('stepSlideMinus')
+            this.$emit('stepSlideMinus') //funkcija koja prebacuje pogled na školu
         },
 
-        generateID(){
+        generateID(){ //generiranje unikatnog ID-a za svaki accordion element
             let S4 = function() {
                 return (((1+Math.random())*0x10000)|0).toString(16).substring(1)
             }
-
             return (S4()+S4()+"-"+S4()+"-"+S4()+S4()+S4())
         },
 
-        getCourses(){
+        getCourses(){ //generiranje korisnih predmeta preko korisnih znanja
             this.korisniPredmeti = []
 
             this.data.selectedPath.fakultet.korisnaDobivenaZnanja.forEach(znanjeId => {

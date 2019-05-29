@@ -17,39 +17,36 @@
 
 <script>
 
-// import accordion from "@/components/path/steps/Accordion.vue"
+// import accordion from "@/assets/scripts/accordion/Accordion.vue"
 
 export default {
     name: 'collegeStep',
+
     components: {
         // accordion,
     },
+
     props:['data'],
+
 	data() {
-		return {
-
-        }
+		return {}
     },
+
     watch: {
-        'data.selectedHighSchool._id':function() {
-
-        }
+        'data.selectedHighSchool._id':function() {}
     },
-    mounted() {
 
-    },
     methods: {
         slidePlus() {
-            this.$emit('stepSlidePlus')
+            this.$emit('stepSlidePlus') //funkcija koja prebacuje pogled na fakultet
         },
 
-        generateID(){
-            let S4 = function() {
-                return (((1+Math.random())*0x10000)|0).toString(16).substring(1)
-            }
-
-            return (S4()+S4()+"-"+S4()+"-"+S4()+S4()+S4())
-        }
+        // generateID(){
+        //     let S4 = function() {
+        //         return (((1+Math.random())*0x10000)|0).toString(16).substring(1)
+        //     }
+        //     return (S4()+S4()+"-"+S4()+"-"+S4()+S4()+S4())
+        // }
     }
 }
 </script>

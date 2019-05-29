@@ -6,10 +6,13 @@ class thirdAlgorithm:
         self.fakulteti = fakulteti
         self.zanimanja = zanimanja
         self.odabir = {
-            "smjerId": odabir["smjerId"],
             "skolaId": odabir["skolaId"],
-            "fakultetId": odabir["fakultetId"]
+            "fakultetId": odabir["fakultetId"],
+            "smjerId": odabir["smjerId"]
         }
+
+
+    #metoda generira listu zanimanja uzimajući u obzir kategoriju zadanog fakulteta
     def filter_zanimanja(self):
         odabraniFakultetSmjerKategorija = ""
         filtriranaZanimanja = []
@@ -27,6 +30,8 @@ class thirdAlgorithm:
         
         return filtriranaZanimanja
 
+
+    #usporedba potrebnih znanja svakog filtiranog zanimanja s izlaznim znanjima zadanog fakulteta
     def usporedba_zanimanja(self):
         dobivenaZnanjaFakulteta = []
         brojPoklapanja = []
@@ -56,7 +61,9 @@ class thirdAlgorithm:
             })
 
         return brojPoklapanja
-    
+
+
+    #sortiranje zanimanja po broju znanja koja se preklapaju sa znanjima zadanog fakulteta
     def sortiranje_zanimanja(self):
         def sortByKey(e):
             return e["brojIstihZnanja"]
@@ -66,6 +73,8 @@ class thirdAlgorithm:
 
         return sortiranaZanimanja
     
+
+    #izlazni objekt/riječnik
     def izlaz(self):
         return {
             "listaZanimanja" : self.sortiranje_zanimanja(),

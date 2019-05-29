@@ -24,26 +24,30 @@
 <script>
 export default {
   name: 'toggleStep',
+
   props: ['path'],
+
 	data() {
 		return {
 			step: 0
 		}
   },
+
   mounted(){
     this.$emit('stepClicked', 0)
 
     document.getElementsByTagName("input")[0].setAttribute("checked", "true")
   },
+
 	methods: {
-		changeStepTo(s) {
+		changeStepTo(s) { //vraća odabrani korak na parent element
       if(this.step != s){
         this.step = s
         this.$emit('stepClicked', s)
       }
     },
 
-    changeStepPlus() {
+    changeStepPlus() { //promjena koraka u naprijed
       this.step++
 
       let t = this
@@ -52,7 +56,7 @@ export default {
       }, 0);
     },
 
-    changeStepMinus() {
+    changeStepMinus() { //promjena koraka u nazad
       this.step--
 
       let t = this
@@ -73,13 +77,13 @@ export default {
       y[this.step].checked = true
     },
 
-    moveSelector(position) {
+    moveSelector(position) { //pomak stepSelector elementa prema gore na scroll
       let elem = document.getElementById("toggleCategoryContainer")
 
       if(position == 1){
-        elem.style.top = 8 + '%'
+        elem.style.transform = "translateY(-130%)"
       } else {
-        elem.style.top = 28 + '%'
+        elem.style.transform = "translateY(0%)"
       }
     }
 	}
@@ -101,7 +105,7 @@ export default {
   padding-top: 0.5em;
   align-content: center;
   z-index: -100;
-  transition: 0.3s ease;
+  transition: 0.5s;
 }
 
 #toggleCategory{

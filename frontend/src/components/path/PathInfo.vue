@@ -14,13 +14,16 @@ import collegeStep from "@/components/path/steps/CollegeStep.vue"
 import professionStep from "@/components/path/steps/ProfessionStep.vue"
 
 export default {
-    name: 'start',
-    props: ['data'],
+	name: 'start',
+	
+	props: ['data'],
+	
 	components: {
 		highSchoolStep,
         collegeStep,
         professionStep
 	},
+
 	data() {
 		return {
 			message: 'Click for slide',
@@ -30,9 +33,10 @@ export default {
 			transitionDirection: 'slide'
 		}
 	},
+
 	mounted() {
 
-		//handling stepSelector hide on scroll
+		//povećanje elementa na scroll i sakrivanje selektora puta
 		if(window.innerWidth < 1070){
 			let topOffset = 0
 			let t = this
@@ -53,6 +57,7 @@ export default {
 			}
 		}
 	},
+
 	methods: {
         changeStep(step){
             if(step >  this.currentComp){
@@ -69,6 +74,7 @@ export default {
             this.currentComp++
             this.$emit('stepSlidePlusEmitter')
 		},
+		
 		slideMinus(){
 			this.transitionDirection = 'slideBack'
             this.currentComp--
@@ -87,7 +93,7 @@ export default {
     width: 100%;
     z-index: -100;
 	overflow: auto;
-	transition: 0.3s ease;
+	transition: 0.5s;
 }
 
 .container{

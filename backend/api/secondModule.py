@@ -11,6 +11,7 @@ class secondAlgorithm:
         }
 
 
+    #metoda generira listu fakulteta uzimajući u obzir kategoriju zadanog zanimanja
     def filter_fakulteta(self):
         odabranoZanimanjeKategorija = ""
         filtriraniFakulteti = []
@@ -28,6 +29,8 @@ class secondAlgorithm:
         
         return filtriraniFakulteti
     
+
+    #usporedba izlaznih znanja svakog filtiranog fakulteta s potrebnim znanjima za zanimanje
     def usporedba_fakulteta(self):
         potrebnaZnanjaZanimanje = []
         brojPoklapanja = []
@@ -64,6 +67,8 @@ class secondAlgorithm:
 
         return brojPoklapanja
 
+
+    #sortiranje fakulteta po broju znanja koja se preklapaju sa znanjima odabranog zanimanja
     def sortiranje_fakulteta(self):
         def sortByKey(e):
             return e["brojIstihZnanja"]
@@ -73,6 +78,8 @@ class secondAlgorithm:
 
         return sortiraniFakulteti
 
+
+    #izlazni objekt/riječnik
     def izlaz(self):
         return {
             "listaFakulteta" : self.sortiranje_fakulteta(),

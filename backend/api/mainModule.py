@@ -11,6 +11,8 @@ class mainAlgorithm:
             "zanimanjeId": str(odabir["zanimanjeId"])
         }
 
+
+
     def dohvacanjePodataka(self):
         skola = {}
         fakultet = {}
@@ -33,7 +35,23 @@ class mainAlgorithm:
             "fakultet": fakultet,
             "zanimanje": zanimanje
         }
-    
+
+
+    #preuzimanje potrebnih znanja za zanimanje i svih izlaznih znanja iz zadanog fakulteta
+    def generiranje_znanja_skola(self):
+        potrebnaZnanjaZanimanje = self.usporedba_znanja_fakultet()["filtriranaPotrebnaZnanja"]
+        dobivenaZnanjaSkola = []
+
+        for j in self.skole:
+            if str(j["_id"]) == self.odabir["skolaId"]:
+                for c in j["predmeti"]:
+                    for d in c["dobivenaZnanja"]:
+                        dobivenaZnanjaSkola.append(d["_id"])
+                
+        return potrebnaZnanjaZanimanje, dobivenaZnanjaSkola
+
+
+    #preuzimanje potrebnih znanja za zanimanje i svih izlaznih znanja iz srednje škole
     def generiranje_znanja_fakultet(self):
         potrebnaZnanjaZanimanje = []
         dobivenaZnanjaFakultet = []
@@ -53,18 +71,23 @@ class mainAlgorithm:
                 
         return potrebnaZnanjaZanimanje, dobivenaZnanjaFakultet
 
-    def generiranje_znanja_skola(self):
-        potrebnaZnanjaZanimanje = self.usporedba_znanja_fakultet()["filtriranaPotrebnaZnanja"]
-        dobivenaZnanjaSkola = []
 
-        for j in self.skole:
-            if str(j["_id"]) == self.odabir["skolaId"]:
-                for c in j["predmeti"]:
-                    for d in c["dobivenaZnanja"]:
-                        dobivenaZnanjaSkola.append(d["_id"])
-                
-        return potrebnaZnanjaZanimanje, dobivenaZnanjaSkola
+    #metoda za usporedbu potrebnih znanja iz zadanog zanimanja i dobivenih znanja u srednjoj školi
+    def usporedba_znanja_skola(self):
+        x, y = self.generiranje_znanja_skola()
+        potrebnaZnanjaZanimanje = set(x)
+        dobivenaZnanjaSkola = set(y)
 
+        korisnaDobivenaZnanja = potrebnaZnanjaZanimanje.intersection(dobivenaZnanjaSkola)
+        filtriranaPotrebnaZnanja = potrebnaZnanjaZanimanje.difference(dobivenaZnanjaSkola)
+
+        return {
+            "korisnaDobivenaZnanja": list(korisnaDobivenaZnanja),
+            "filtriranaPotrebnaZnanja": list(filtriranaPotrebnaZnanja)
+        }
+
+
+    #metoda za usporedbu potrebnih znanja iz zadanog zanimanja i dobivenih znanja na fakultetu
     def usporedba_znanja_fakultet(self):
         x, y = self.generiranje_znanja_fakultet()
         potrebnaZnanjaZanimanje = set(x)
@@ -77,21 +100,9 @@ class mainAlgorithm:
             "korisnaDobivenaZnanja": list(korisnaDobivenaZnanja),
             "filtriranaPotrebnaZnanja": list(filtriranaPotrebnaZnanja)
         }
-    
-    def usporedba_znanja_skola(self):
-        x, y = self.generiranje_znanja_skola()
-        potrebnaZnanjaZanimanje = set(x)
-        dobivenaZnanjaSkola = set(y)
 
-        korisnaDobivenaZnanja = potrebnaZnanjaZanimanje.intersection(dobivenaZnanjaSkola)
-        filtriranaPotrebnaZnanja = potrebnaZnanjaZanimanje.difference(dobivenaZnanjaSkola)
 
-        return {
-            "korisnaDobivenaZnanja": list(korisnaDobivenaZnanja),
-            "filtriranaPotrebnaZnanja": list(filtriranaPotrebnaZnanja)
-        } 
-    
-
+    #metoda generira izlazni objekt/riječnik potreban za rad aplikacije
     def izlaz(self):
         
         izlazniObjekt = {

@@ -45,15 +45,18 @@ import axios from 'axios'
 
 export default {
 	name: 'case2',
+
 	data() {
 		return {
 			skole: [],
 			zanimanja: []
 		}
 	},
+
 	beforeMount(){
-		this.$store.dispatch('resetData')
+		this.$store.dispatch('resetData') //na svakom učitavanju stranice, podaci se resetiraju
 	},
+
 	mounted() {
 		this.$store.state.selectedOptions.slucajOdabira = 2
 
@@ -71,19 +74,22 @@ export default {
 			}
 		})
 	},
+
 	methods: {
 		confirm() {
 			this.$store.state.routeHandler = false
 			this.$router.push('/mypath')
 		},
-		refresh(id){
+
+		refresh(id){ //reset pojedinog odabira
 			if(this.$store.state.selectedOptions[id] == null){
 				this.$store.state.selectedOptions[id] = ""
 			}
 		}
 	},
+
 	computed: {
-		validator() {
+		validator() { //provjera jesu li svi podaci odabrani
 			let obj = this.$store.state.selectedOptions
 			if(obj.skolaId == false || obj.zanimanjeId == false){
 				return true
@@ -101,7 +107,7 @@ export default {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background-image: url("https://svgshare.com/i/DFD.svg");
+	background-image: url("./../../assets/img/iconsPattern.svg");
 	background-repeat: repeat;
 	background-size: 200px 200px;
 	opacity: 0.1;
