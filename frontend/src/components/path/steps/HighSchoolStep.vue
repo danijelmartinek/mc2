@@ -6,11 +6,12 @@
                 {{ data.selectedHighSchool.naziv }}
             </h1>
             <h4><span>{{ data.selectedHighSchool.vrsta }}</span></h4>
+            <h4><span>{{ data.selectedHighSchool.podvrsta }}</span></h4>
             <div class="divider"></div>
             <div class="elementDistancer"></div>
-            <div><b>KOLEGE IZ TVOJE ŠKOLE KOJI PLANIRAJU UPISATI ODABRANI FAKULTET</b></div>
+            <!-- <div><b>KOLEGE IZ TVOJE ŠKOLE KOJI PLANIRAJU UPISATI ODABRANI FAKULTET</b></div>
             <div class="elementDistancer"></div>
-            <div class="elementDistancer"></div>
+            <div class="elementDistancer"></div> -->
         </div>
 	</div>   
 </template>

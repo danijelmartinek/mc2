@@ -13,8 +13,15 @@
             </div>
             <div class="divider"></div>
             <div class="elementDistancer"></div>
+
+            <accordion :accordionID="'acc-' + generateID()" label="Tipovi studija" width="200px">
+                <div v-for="tip in data.selectedCollege.vrsteStudija" :key="tip._id">
+                    <div v-if="tip.placanje == true">{{ tip.tip }} uz plaćanje</div>
+                    <div v-else>{{ tip.tip }}</div>
+                </div>
+            </accordion>
             
-            <accordion :accordionID="'acc-' + generateID()" label="Smjerovi" width="200px" :customStyleWrap="'border-bottom: 2px solid #2C365D;'">
+            <accordion :accordionID="'acc-' + generateID()" label="Smjerovi" width="400px" :customStyleWrap="'border-bottom: 2px solid rgb(44, 54, 93, 0.2);'">
                 <div v-for="smjer in data.selectedCollege.smjerovi" :key="smjer._id">
                     <accordion :accordionID="'acc-' + generateID()" :label="smjer.naziv" width="220px">
                         <div><b>KOLEGIJI:</b>
@@ -30,7 +37,7 @@
                         <div v-if="smjer.prehrana == true" class="infoElementNested">- smjer ima menzu</div>
                         <div class="elementDistancer"></div>
                         <div class="infoElement">
-                            <accordion :accordionID="'acc-' + generateID()" label="Upis" width="200px" :customStyleWrap="'border-bottom: 2px solid #2C365D'">
+                            <accordion :accordionID="'acc-' + generateID()" label="Upis" width="200px" :customStyleWrap="'border-bottom: 2px solid rgb(44, 54, 93, 0.2)'">
                                 <div>
                                     <div v-if="smjer.upis.prijemni == true"><b>*</b>POTREBNO JE POLAGANJE PRIJEMNOG ISPITA</div>
                                     <div v-if="smjer.upis.prijemni == true"><b>*</b>POTREBAN JE PORTFOLIO RADOVA</div>
@@ -55,11 +62,11 @@
                 <span v-if="!(i == (korisniPredmeti.length - 1))">,</span>
             </span>
             <div class="elementDistancer"></div>
-            <div><b>SAVJETI STUDENATA OVOGA FAKULTETA</b></div>
+            <!-- <div><b>SAVJETI STUDENATA OVOGA FAKULTETA</b></div>
             <div class="elementDistancer"></div>
+            <div class="elementDistancer"></div> -->
             <div class="elementDistancer"></div>
-            <div class="elementDistancer"></div>
-            <div><b>LOKACIJA FAKULTETA</b></div>
+            <div><b>LOKACIJA FAKULTETA: </b>{{ data.selectedCollege.lokacija.adresa }}, {{ data.selectedCollege.lokacija.grad }}</div>
         </div>
 	</div>   
 </template>
@@ -87,6 +94,9 @@ export default {
 
     watch: {
         'data.selectedCollege._id':function() { //na promjenu puta, generiraju se korisni predmeti na tom fakultetu za budući posao
+            this.getCourses()
+        },
+        'data.selectedProfession._id':function() { //na promjenu puta, generiraju se korisni predmeti na tom fakultetu za budući posao
             this.getCourses()
         }
     },
@@ -174,7 +184,7 @@ export default {
     width: 2em;
     top: -2%;
     left: 8%;
-    fill: #2C365D;
+    fill: hsl(228, 36%, 27%);
     margin: 0.5em 0.2em 0em 0em;
 }
 

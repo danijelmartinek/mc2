@@ -87,7 +87,7 @@ export default {
 }
 
 .gridSelect > div:active{
-  background-color: rgb(63, 77, 134);
+  background-color: rgb(63, 77, 135);
 }
 
 @media only screen and (min-width: 340px) {

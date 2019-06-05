@@ -1,4 +1,4 @@
-from flask import Flask, request, Response
+from flask import Flask, request, Response, session
 from flask_pymongo import PyMongo
 from flask_cors import CORS
 import json
@@ -10,6 +10,10 @@ import time
 from api.mainModule import mainAlgorithm
 from api.secondModule import secondAlgorithm
 from api.thirdModule import thirdAlgorithm
+
+from api.auth import Auth, SignUp
+
+
 
 
 class JSONEncoder(json.JSONEncoder):  #klasa za pretvorbu Mongo objekata u string
@@ -30,10 +34,59 @@ class JSONEncoder(json.JSONEncoder):  #klasa za pretvorbu Mongo objekata u strin
 
 
 app = Flask(__name__)
+
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 app.config["MONGO_URI"] = "mongodb://localhost:27017/mc2"
 mongo = PyMongo(app)
+
+
+uSession = Auth(app)
+uSession.init(3600)
+
+
+@app.route('/register', methods = ['POST'])
+def userRegister():
+    data = request.get_json(force=True)
+    registeredUser = SignUp(uSession, mongo.db.commonUsers).registerUser(data)
+    res = JSONEncoder().response(registeredUser)
+
+    return res
+
+@app.route('/login', methods = ['POST'])
+def userLogin():
+    data = request.get_json(force=True)
+    loggedUser = SignUp(uSession, mongo.db.commonUsers).loginUser(data)
+    res = JSONEncoder().response(loggedUser)
+
+    return res
+
+@app.route('/logout')
+def clear():
+    return uSession.clearSession()
+
+@app.route('/checksession')
+def checkSession():
+    return uSession.getSession()
+
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def konverzija(kolekcija):  #vraća listu s traženim objektima iz baze podataka
     lista = []
     for x in kolekcija.find():

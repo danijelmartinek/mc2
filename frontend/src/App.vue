@@ -20,6 +20,11 @@ export default {
   src: url(./assets/fonts/public-sans/PublicSans-Regular.woff2)
 }
 
+@font-face {
+  font-family: PublicSansBlack;
+  src: url(./assets/fonts/public-sans/PublicSans-Black.woff2)
+}
+
 html{
   width: 100%;
   height: 100%;

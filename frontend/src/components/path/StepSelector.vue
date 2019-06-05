@@ -166,7 +166,7 @@ export default {
   height: 3.5em;
   width: 3.5em;
   background-color: #FF5E3A;
-  box-shadow: 0px 20px 35px 5px rgb(106, 106, 108, 0.50);
+  box-shadow: 0px 20px 35px 5px rgb(255, 94, 58, 0.4);
 }
 
 @media only screen and (min-width: 1070px) {

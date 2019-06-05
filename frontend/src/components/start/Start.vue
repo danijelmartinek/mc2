@@ -1,10 +1,19 @@
 <template>
     <div id="start" v-touch:swipe.left="slidePlus">
-            <div v-on:click="slidePlus">
+        <div class="drow">
+            <div class="info dcol xs-12 m-6">
                 <p>
-                    Start
+                    Pronađi svoj put!
                 </p>
-            </div>    
+            </div>
+            <div class="buttonContainer dcol xs-12 m-6" v-on:click="slidePlus">
+                <span class="button">
+                    <p>
+                        Start
+                    </p>
+                </span>
+            </div>
+        </div>   
     </div>
 </template>
 
@@ -22,13 +31,35 @@ export default {
 <style scoped>
 #start {
     height: 100%;
-    position: relative;
     text-align: center;
     vertical-align: center;
-    line-height: 20vw;
 }
 
-#start > div{
+.info{
+    height: 40vh;
+    position: relative;
+}
+
+.info > p{
+    font-family: 'PublicSansBlack';
+    text-transform: uppercase;
+    width: 50%;
+    font-size: 2.5em;
+    font-weight: 1000;
+    color: #FF5E3A;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0px 0px 10px rgb(255, 94, 58, 0.5);
+}
+
+.buttonContainer{
+    height: 40vh;
+    position: relative;
+}
+
+.button{
     width: 55vw;
     height: 55vw;
     color: #F2F2F0;
@@ -37,12 +68,12 @@ export default {
     background-blend-mode: multiply;
     border-radius: 50%;
     cursor: pointer;
-    
     position: absolute;
-    top: 40%;
     left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0px 0px 30px 15px rgba(0, 0, 0, 0.2);
+    
+    box-shadow: 0px 0px 30px 15px rgb(255, 94, 58, 0.3);
 
     -webkit-tap-highlight-color: transparent;
     webkit-touch-callout: none; /* iOS Safari */
@@ -53,7 +84,7 @@ export default {
     user-select: none; /* Non-prefixed version, current supported by Chrome and Opera */
 }
 
-#start > div > p{
+.button > p{
     font-size: 2em;
     font-weight: bold;
     text-transform: uppercase;
@@ -65,39 +96,70 @@ export default {
     transform: translate(-50%, -50%);
 }
 
-#start > div:active{
+.button:active{
     width: 51vw;
     height: 51vw;
     transition: 0.1s;
 }
 
 @media only screen and (min-width: 470px) {
-    #start > div{
+    .info > p{
+        font-size: 4em;
+    }
+
+    .button{
         width: 35vw;
         height: 35vw;
     }
 
-    #start > div > p{
+    .button > p{
         font-size: 2.5em;
     }
 
-    #start > div:active{
+    .button:active{
         width: 33vw;
         height: 33vw;
     }
 }
 
-@media only screen and (min-width: 1070px) {
-    #start > div{
-        width: 20vw;
-        height: 20vw;
+@media only screen and (min-width: 710px) {
+    .info{
+        height: 75vh;
+        text-align: left;
     }
 
-    #start > div > p{
+    .info > p{
+        font-size: 5em;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-shadow: 0px 0px 15px rgb(255, 94, 58, 0.5);
+    }
+
+    .buttonContainer{
+        height: 100vh;
+    }
+}
+
+@media only screen and (min-width: 1070px) {
+    .info > p{
+        font-size: 6em;
+        left: 62.5%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .button{
+        width: 20vw;
+        height: 20vw;
+        left: 37.5%;
+    }
+
+    .button > p{
         font-size: 3em;
     }
 
-    #start > div:active{
+    .button:active{
         width: 19vw;
         height: 19vw;
     }

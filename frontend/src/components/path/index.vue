@@ -6,9 +6,11 @@
             <div class="elem pathListElement" v-for="(path, i) in paths" :key="i" @click="changeSelectedPath(i)">
                 <div>
                     <span>
-                        {{path.fakultet.naziv}}
-                        <div class="step-divider"></div>
-                        {{path.zanimanje.naziv}}
+                        <div>
+                            {{path.fakultet.naziv}}
+                            <div class="step-divider"></div>
+                            {{path.zanimanje.naziv}}
+                        </div>
                     </span>
                 </div>
             </div>
@@ -248,6 +250,12 @@ export default {
     text-overflow: ellipsis;
 }
 
+.pathListElement > div > span > div{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .pathListElementSelected > div{
     display: table;
     width: 100%;
@@ -269,6 +277,9 @@ export default {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+.pathListElementSelected > div > span > div{
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -329,6 +340,17 @@ export default {
     .pathListElement > div > span {
         display: inline;
         position: static;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .pathListElement > div > span > div{
+        width: 100%;
+        padding: 0em 2em 0em 2em;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .pathListElementSelected {
@@ -347,6 +369,14 @@ export default {
     .pathListElementSelected > div > span {
         display: inline;
         position: static;
+    }
+
+    .pathListElementSelected > div > span > div{
+        width: 100%;
+        padding: 0em 2em 0em 4em;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 </style>

@@ -1,10 +1,25 @@
-POST http://localhost:5000/gencaseone HTTP/1.1
+POST http://localhost:5000/register HTTP/1.1
 content-type: application/json
 
 {
-    "fakultetId": "5cdec1dde96cf85787949292",
-    "smjerId": "5cdec1dde96cf85787949293",
-    "skolaId": "5cdebf15f88a0c5529953b7d",
-    "zanimanjeId": "bf63bdd35bfea107408f28e1",
-    "interesi": []
+    "email": "fdsfdsds",
+    "password": "dsfdsgetg"
 }
+
+###
+
+POST http://localhost:5000/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "fdsfds",
+    "password": "dsfdsgetg"
+}
+
+###
+
+GET http://localhost:5000/logout HTTP/1.1
+
+###
+
+GET http://localhost:5000/checksession HTTP/1.1
