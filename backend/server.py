@@ -41,7 +41,7 @@ mongo = PyMongo(app)
 
 
 uSession = Auth(app)
-uSession.init(3600)
+uSession.config(3600)
 
 
 @app.route('/register', methods = ['POST'])
@@ -52,6 +52,7 @@ def userRegister():
 
     return res
 
+
 @app.route('/login', methods = ['POST'])
 def userLogin():
     data = request.get_json(force=True)
@@ -60,27 +61,15 @@ def userLogin():
 
     return res
 
+
 @app.route('/logout')
 def clear():
     return uSession.clearSession()
 
-@app.route('/checksession')
+
+@app.route('/auth')
 def checkSession():
     return uSession.getSession()
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

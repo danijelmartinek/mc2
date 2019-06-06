@@ -5,10 +5,18 @@ Vue.use(Router)
 import Start from "@/components/start/index.vue"
 import MyPath from "@/components/path/index.vue"
 
+import Profile from "@/components/profile/index.vue"
+
 import Case1 from "@/components/generatePath/Case1.vue"
 import Case2 from "@/components/generatePath/Case2.vue"
 import Case3 from "@/components/generatePath/Case3.vue"
 import Case4 from "@/components/generatePath/Case4.vue"
+
+import Register from "@/components/auth/Register.vue"
+import Login from "@/components/auth/Login.vue"
+
+import authMiddleware from '@/middleware/auth.js';
+//import authRoleMiddleware from '@/middleware/authWRoleCheck.js';
 
 export default new Router({
   mode: "history",
@@ -42,6 +50,22 @@ export default new Router({
       path: "/case/4",
       name: "CaseFour",
       component: Case4
+    },
+    {
+      path: "/register",
+      name: "Register",
+      component: Register,
+    },
+    {
+      path: "/login",
+      name: "Login",
+      component: Login,
+    },
+    {
+      path: "/profile",
+      name: "Profile",
+      component: Profile,
+      beforeEnter: authMiddleware
     }
   ]
 });

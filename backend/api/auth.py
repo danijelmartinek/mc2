@@ -29,7 +29,7 @@ class Auth:
     def __init__(self, app):
         self.app = app
 
-    def init(self, sessionLifetime):
+    def config(self, sessionLifetime):
         self.app.config["SESSION_TYPE"] = 'redis'
         self.app.config["SECRET_KEY"] = os.urandom(24)
         self.app.config["PERMANENT_SESSION_LIFETIME"] = sessionLifetime
@@ -46,6 +46,7 @@ class Auth:
         if data:
             return jsonify({'auth': True, 'userData': json.loads(data)})
         else:
+            self.clearSession() #preventing sending empty session key to browser
             return jsonify({'auth': False})
 
     def clearSession(self):
@@ -62,6 +63,8 @@ class SignUp:
         self.dbCollection = dbCollection
     
     def registerUser(self, data):
+        self.session.clearSession() #preventing sending empty session key to browser
+
         if not data['email']:
             return {
                 'success': False,
@@ -78,13 +81,14 @@ class SignUp:
         if not savedUser['success']:
             return savedUser
         
-        self.session.clearSession()
         registeredUser = JSONEncoder().encode(savedUser['data'])
         
         return self.session.setSession(registeredUser)
 
 
     def loginUser(self, data):
+        self.session.clearSession() #preventing sending empty session key to browser
+
         if not data['email']:
             return {
                 'success': False,
@@ -97,17 +101,22 @@ class SignUp:
             }
 
         user = self.dbCollection.find_one({'email' : data['email']})
+        if not user:
+            return {
+                'success': False,
+                'error': 'Wrong email address.'
+            }
 
-        if self.verify_password(user['password'], data['password']):
-            self.session.clearSession()
-            del user['password']
-            loggedUser = JSONEncoder().encode(user)
-            return self.session.setSession(loggedUser)
-        else:
+        if not self.verify_password(user['password'], data['password']):
             return {
                 'success': False,
                 'error': 'Passwords does not match.'
             }
+        else:
+            del user['password']
+            loggedUser = JSONEncoder().encode(user)
+            return self.session.setSession(loggedUser)
+            
 
 
 
