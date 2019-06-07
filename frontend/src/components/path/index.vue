@@ -20,8 +20,12 @@
         <stepSelector ref="stepIndicator" v-if="dataLoaded" :path="data.selectedPath" @stepClicked="changeSelectedStep"></stepSelector>
 
         <pathInfo ref="step" :data="data" v-on:stepSlidePlusEmitter="slidePlusEmitter" v-on:stepSlideMinusEmitter="slideMinusEmitter" v-on:togglePathSelector="togglePathSelector"></pathInfo>
+        
 
-	</div>   
+        <div v-show="checkAuth" @click="savePath()" id="fab" class="fab" :class="{ fabselected: pathSaved }">
+            <font-awesome-icon :icon="['fa', 'save']" />
+        </div>
+	</div>
 </template>
 
 <script>
@@ -48,7 +52,7 @@ export default {
             },
             dataLoaded: false,
             currentSelectedPathIndex: 0,
-			paths: []
+            paths: []
 		}
     },
 
@@ -64,7 +68,7 @@ export default {
     mounted() {
         this.$store.state.routeHandler = true //učitana finalna ruta generiranja puteva
 
-        let headers = {
+        const headers = {
             'Content-Type': 'application/json'
         }
 
@@ -161,6 +165,44 @@ export default {
             } else {
                 elem.style.transform = "translateY(-110%)"
                 this.$refs.stepIndicator.moveSelector(1)
+            }
+        },
+
+        savePath(){
+            if(this.checkAuth){
+                if(this.pathSaved){
+                    let index = this.$store.state.user.savedPaths.indexOf(this.data.selectedPath._id)
+                    this.$store.state.user.savedPaths.splice(index, 1);
+                } else {
+                    this.$store.state.user.savedPaths.push(this.data.selectedPath._id)
+                }
+
+                const headers = {
+                    'Content-Type': 'application/json'
+                }
+                let obj = {
+                    _id: this.$store.state.user._id,
+                    savedPaths: this.$store.state.user.savedPaths
+                }
+                axios.post('/api/updatesavedpaths', obj, {headers: headers})
+            }
+        }
+    },
+
+    computed: {
+        checkAuth() {
+          return this.$store.getters.checkAuth
+        },
+
+        pathSaved() {
+            if(this.checkAuth){
+                if(this.$store.state.user.savedPaths.includes(this.data.selectedPath._id)){
+                    return true
+                } else {
+                    return false
+                }
+            } else {
+                return false
             }
         }
     }
@@ -378,5 +420,43 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
     }
+}
+
+
+.fab{
+    width: 3em;
+    height: 3em;
+    position: fixed;
+    bottom: 1.5em;
+    right: 1.5em;
+    box-shadow: 0px 0px 40px 2px rgb(44, 54, 93, 0.5);
+
+    color: #F2F2F0;
+    background-color: #2C365D;
+    border-radius: 50%;
+    z-index: 999;
+    cursor: pointer;
+}
+.fab:hover{
+    background-color: #2C365D;
+    opacity: 0.8;
+}
+
+
+.fab > svg{
+    font-size: 1.5em;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fabselected{
+    background-color: #FF5E3A;
+    box-shadow: 0px 0px 40px 2px rgb(255, 94, 58, 0.5);
+}
+.fabselected:hover{
+    background-color: #FF5E3A;
+    opacity: 0.8;
 }
 </style>

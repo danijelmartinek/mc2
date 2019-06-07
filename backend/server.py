@@ -1,4 +1,4 @@
-from flask import Flask, request, Response, session
+from flask import Flask, request, Response, session, json
 from flask_pymongo import PyMongo
 from flask_cors import CORS
 import json
@@ -92,7 +92,7 @@ zanimanja = konverzija(mongo.db.zanimanja)
 @app.route('/gencaseone', methods = ['POST'])
 def generiranjePutova1():
     req = request.get_json(force=True)
-    res = mainAlgorithm(skole, fakulteti, zanimanja, req).izlaz()
+    res = mainAlgorithm(mongo.db.putovi, skole, fakulteti, zanimanja, req).izlaz()
     return JSONEncoder().response([res])
 
 
@@ -104,7 +104,7 @@ def generiranjePutova2():
     odgovarajuciFakulteti = secondAlgorithm(skole, fakulteti, zanimanja, req).izlaz()
 
     for i in odgovarajuciFakulteti['listaFakulteta']:
-        put = mainAlgorithm(skole, fakulteti, zanimanja, {
+        put = mainAlgorithm(mongo.db.putovi, skole, fakulteti, zanimanja, {
             'fakultetId' : i['idFakulteta'],
             'skolaId' : odgovarajuciFakulteti['skolaId'],
             'zanimanjeId' : odgovarajuciFakulteti['zanimanjeId']
@@ -123,7 +123,7 @@ def generiranjePutova3():
     odgovarajucaZanimanja = thirdAlgorithm(skole, fakulteti, zanimanja, req).izlaz()
 
     for i in odgovarajucaZanimanja['listaZanimanja']:
-        put = mainAlgorithm(skole, fakulteti, zanimanja, {
+        put = mainAlgorithm(mongo.db.putovi, skole, fakulteti, zanimanja, {
             'fakultetId' : odgovarajucaZanimanja['fakultetId'],
             'skolaId' : odgovarajucaZanimanja['skolaId'],
             'zanimanjeId' : i['idZanimanja']
@@ -175,3 +175,12 @@ def dohvatiZanimanja():
 
 
 
+@app.route('/updatesavedpaths', methods = ['POST'])
+def updateuser():
+    req = request.get_json(force=True)
+    mongo.db.commonUsers.update_one({"_id": ObjectId(req['_id'])}, { "$set": { "savedPaths": req['savedPaths']}})
+    updated = mongo.db.commonUsers.find_one({"_id": ObjectId(req['_id'])})
+    uSession.clearSession()
+    uSession.setSession(JSONEncoder().encode(updated))
+
+    return JSONEncoder().response({'success': True})

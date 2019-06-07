@@ -1,7 +1,10 @@
+from flask_pymongo import PyMongo
 from bson import ObjectId
+import datetime
 
 class mainAlgorithm:
-    def __init__(self, skole, fakulteti, zanimanja, odabir):
+    def __init__(self, dbcollection, skole, fakulteti, zanimanja, odabir):
+        self.collection = dbcollection
         self.skole = skole
         self.fakulteti = fakulteti
         self.zanimanja = zanimanja
@@ -133,4 +136,14 @@ class mainAlgorithm:
             "interesi": []
         }
 
-        return izlazniObjekt
+        objektIzBaze = self.collection.find_one({
+            'skola.skolaId' : izlazniObjekt['skola']['skolaId'],
+            'fakultet.fakultetId' : izlazniObjekt['fakultet']['fakultetId'],
+            'zanimanje.zanimanjeId' : izlazniObjekt['zanimanje']['zanimanjeId'],
+            })
+
+        if objektIzBaze:
+            return objektIzBaze
+        else:
+            self.collection.save(izlazniObjekt)
+            return izlazniObjekt

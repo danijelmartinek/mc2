@@ -32,6 +32,7 @@ class Auth:
     def config(self, sessionLifetime):
         self.app.config["SESSION_TYPE"] = 'redis'
         self.app.config["SECRET_KEY"] = os.urandom(24)
+        self.app.config["SESSION_PERMANENT"] = False
         self.app.config["PERMANENT_SESSION_LIFETIME"] = sessionLifetime
         Session(self.app)
 
