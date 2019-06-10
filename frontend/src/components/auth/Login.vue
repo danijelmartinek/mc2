@@ -1,33 +1,46 @@
 <template>
-	<div class="login">
-		<div class="loginErrors">
-			<h4 v-for="(err, i) in login.errors" :key="i">
-				{{ err }}
-			</h4>
-			<h4>{{login.status}}</h4>
-		</div>
+	<div id="login" class="drow">
+    <div class="dcol xs-12 ml-6 loginContainer">
+      <div class="loginForm">
+        <div class="loginErrors">
+          <h4 v-for="(err, i) in login.errors" :key="i">
+            {{ err }}
+          </h4>
+          <h4>{{login.status}}</h4>
+        </div>
 
-		<div style="padding: 0em 2em 2em 2em;">
-			<div>
-				<input
-					v-model="login.email"
-          class="dform"
-					placeholder="E-mail"
-					required
-				>
-			</div>
-			<div>
-				<input
-					v-model="login.password"
-          class="dform"
-					placeholder="Password"
-					type="password"
-					required
-				>
-			</div>
-			<div class="confirm-btn" @click="loginHandler()">Login</div>
-      <div><div class="confirm-btn" @click="logout()">Logout</div></div>
-		</div>
+        <div class="xs-12 loginInputs">
+          <div>
+            <input
+              v-model="login.email"
+              class="dform"
+              placeholder="E-mail"
+              required
+            >
+          </div>
+          <div>
+            <input
+              v-model="login.password"
+              class="dform"
+              placeholder="Lozinka"
+              type="password"
+              required
+            >
+          </div>
+        </div>
+        <div class="offset-xs-1 xs-10 offset-m-3 m-6 offset-l-4 l-4">
+          <div class="confirm-btn" @click="loginHandler()">Prijavi se</div>
+          <div class="confirm-btn" @click="logout()">Logout</div>
+        </div>
+        <div class="register offset-xs-1 xs-10 offset-m-3 m-6 offset-l-4 l-4">
+          <p>Nisi registriran/a?</p>
+         <router-link tag="span" to="/register"><div>Registriraj se.</div></router-link>
+        </div>
+      </div>
+    </div>
+
+    <div class="dcol xs-12 ml-6 info">
+    </div>
 	</div>
 </template>
 
@@ -100,18 +113,18 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 @import './resetInputsStyle.css';
 
 .dform {
+  min-width: 80%;
   font-family: 'PublicSans';
   font-size: 1.2em;
   caret-color: #FF5E3A;
-  width: 30%;
   height: 2.5em;
   color: #F2F2F0;
   padding-left: 1em;
-  margin: 0.5em;
+  margin: 0.5em 0em 0.5em 0em;
   background-color: #2C365D;
   border-radius: 0.5em !important;
 	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
@@ -156,11 +169,10 @@ button {
 }
 
 .confirm-btn {
-	float: left;
-	width: auto !important;
 	color: #F2F2F0;
 	font-weight: bold;
-	text-transform: uppercase;
+  text-transform: uppercase;
+  text-align: center;
 	cursor: pointer;
 	background-color: #FF5E3A;
   padding: 1em;
@@ -174,7 +186,6 @@ button {
 }
 
 .confirm-btn-disabled {
-	float: left;
 	width: auto !important;
 	color: rgb(242, 242, 240, 0.5);
 	font-weight: bold;
@@ -190,6 +201,77 @@ button {
 .confirm-btn:active {
 	font-size: 0.9em;
 	box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.loginContainer{
+  position: absolute;
+  height: 92vh;
+}
+
+.loginForm{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 1em;
+}
+
+.loginInputs{
+  text-align: center;
+}
+
+.info{
+  display: none;
+  position: absolute;
+  left: 50%;
+  height: 92vh;
+  width: 50%;
+  background-color: #2C365D;
+}
+
+@media only screen and (min-width: 710px) {
+	.loginForm {
+    left: 50%;
+    transform: translate(-50%, -50%);
+		width: 60%;
+  }
+}
+
+@media only screen and (min-width: 1070px) {
+	.loginForm {
+		width: 80%;
+  }
+  
+  .info{
+    display: block;
+  }
+}
+
+
+.register{
+  font-size: 0.9em;
+  margin-top: 2em;
+  font-weight: bold;
+  color: #2C365D;
+  text-align: center;
+}
+
+.register > span > div{
+  font-size: 1.2em;
+  border: 2px solid #2C365D;
+  border-radius: 1em;
+  padding: 0.5em;
+  margin: 0em 2em 0em 2em;
+  cursor: pointer;
+}
+
+.register > span > div:hover{
+  color: #fd7d61;
+  border: 2px solid #fd7d61;
 }
 </style>
 

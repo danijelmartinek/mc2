@@ -46,7 +46,7 @@ uSession.config(3600)
 
 @app.route('/register', methods = ['POST'])
 def userRegister():
-    data = request.get_json(force=True)
+    data = request.get_json(force = True)
     registeredUser = SignUp(uSession, mongo.db.commonUsers).registerUser(data)
     res = JSONEncoder().response(registeredUser)
 
@@ -55,7 +55,7 @@ def userRegister():
 
 @app.route('/login', methods = ['POST'])
 def userLogin():
-    data = request.get_json(force=True)
+    data = request.get_json(force = True)
     loggedUser = SignUp(uSession, mongo.db.commonUsers).loginUser(data)
     res = JSONEncoder().response(loggedUser)
 
