@@ -38,7 +38,7 @@ export default {
 				},
 				{
 					text: "Profil",
-					icon: ['fa', 'user']
+					icon: ['fa', 'id-badge']
 				}
 			],
 			page: 0,

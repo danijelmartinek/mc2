@@ -5,7 +5,7 @@
             <router-link tag="span" to="/">
                 <!-- logo aplikacije -->
                 <svg id="logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    width="150px" height="100px" viewBox="0 0 611.576 136.195" enable-background="new 0 0 311.576 136.195"
+                    width="150px" height="40px" viewBox="0 0 611.576 136.195" enable-background="new 0 0 211.576 136.195"
                     xml:space="preserve">
                 <rect x="315.5" y="-371.403" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" width="36" height="36"/>
                 <rect x="351.5" y="-407.403" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" width="36" height="36"/>
@@ -60,14 +60,42 @@
                 </svg>
             </router-link>
         </div>
+
+
+
+
+        <div class="dcol xs-10">
+            <div class="link">
+                <router-link v-if="checkAuth" tag="span" to="/profile">
+                    <font-awesome-icon :icon="['fa', 'user']" />
+                </router-link>
+                <router-link v-else tag="span" to="/login">
+                    <font-awesome-icon :icon="['fa', 'sign-in-alt']" />
+                </router-link>
+            </div>
+            <div class="link">
+                <router-link tag="span" to="/">
+                    <myPathIconAdd></myPathIconAdd>
+                </router-link>
+            </div>
+        </div>
     </div>
   </div>
 </template>
 
 <script>
+import myPathIconAdd from "@/components/core/myPathIconAdd.vue"
 
 export default {
-  name: 'app'
+  name: 'navbar',
+  components:{
+      myPathIconAdd
+  },
+  computed:{
+        checkAuth() {
+            return this.$store.getters.checkAuth
+        },
+  }
 }
 </script>
 
@@ -75,7 +103,7 @@ export default {
 #navbar{
   z-index: 999;
   position: fixed;
-  height: 8%;
+  height: 8vh;
   width: 100%;
   background-color: #F2F2F0;
   box-shadow: 0px 5px 30px 5px rgba(0, 0, 0, 0.1);
@@ -83,8 +111,15 @@ export default {
 
 #logo{
     float: left;
-    height: 5vh;
-    padding: 0.4em;
+    width: 7em;
+    cursor: pointer;
+}
+
+.link{
+    color: #2C365D;
+    float: right;
+    font-size: 1.7em;
+    margin: 0em 0.5em 0em 0.5em;
     cursor: pointer;
 }
 </style>
