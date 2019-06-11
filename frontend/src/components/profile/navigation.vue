@@ -74,7 +74,7 @@ export default {
                 let items = document.getElementsByClassName('item')
 
                 if (x.matches) { // If media query matches
-                    document.getElementsByClassName('inner-container')[0].style.height = 7 * itemCount + "em"
+                    document.getElementsByClassName('inner-container')[0].style.height = 7 * (itemCount + 1) + "em"
                     for(let i = 0; i < items.length; i++){
                         items[i].style.width = 100 + "%"
                     }
@@ -188,6 +188,7 @@ export default {
         height: 92%;
         background-color: #2C365D;
         z-index: 999;
+        box-shadow: 10px 0px 50px 10px rgba(0, 0, 0, 0.2);
     }
 
     .inner-container{
@@ -201,6 +202,7 @@ export default {
         height: 7em;
         background-color: #2C365D;
         cursor: pointer;
+        z-index: 200;
     }
 
     .item > span{
@@ -229,6 +231,7 @@ export default {
 
     .item-selected {
         background-color: #F2F2F0;
+        z-index: 0;
     }
 
     .item-selected > span {
@@ -243,11 +246,16 @@ export default {
         border-top-right-radius: 0em;
         border-bottom-right-radius: 2em;
         background-color: #2C365D;
+        z-index: 200;
+        box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.2);
     }
+
     .item-selected-a {
         border-top-left-radius: 0em;
         border-top-right-radius: 2em;
         background-color: #2C365D;
+        z-index: 200;
+        box-shadow: 0px -10px 10px 5px rgba(0, 0, 0, 0.2);
     }
 
     .dummy-item{

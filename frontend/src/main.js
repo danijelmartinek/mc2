@@ -3,12 +3,12 @@ import App from './App.vue'
 import router from './router'
 import vSelect from 'vue-select'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheck, faSave, faBook, faGraduationCap, faBriefcase, faUser, faIdBadge, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faSave, faBook, faGraduationCap, faBriefcase, faUser, faIdBadge, faSignInAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { faSave as farSave, faFilePdf as farFilePdf } from '@fortawesome/free-regular-svg-icons'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCheck, faSave, faBook, faGraduationCap, faBriefcase, faUser, faIdBadge, faSignInAlt, farSave, farFilePdf)
+library.add(faCheck, faSave, faBook, faGraduationCap, faBriefcase, faUser, faIdBadge, faSignInAlt, faTrashAlt, farSave, farFilePdf)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

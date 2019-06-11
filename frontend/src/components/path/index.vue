@@ -172,9 +172,13 @@ export default {
             if(this.checkAuth){
                 if(this.pathSaved){
                     let index = this.$store.state.user.savedPaths.indexOf(this.data.selectedPath._id)
+                    if(this.$store.state.user.savedPaths[0]){
+                        this.$store.state.user.selectedPath = this.$store.state.user.savedPaths[0]
+                    }
                     this.$store.state.user.savedPaths.splice(index, 1);
                 } else {
                     this.$store.state.user.savedPaths.push(this.data.selectedPath._id)
+                    this.$store.state.user.selectedPath = this.data.selectedPath._id
                 }
 
                 const headers = {
@@ -182,6 +186,7 @@ export default {
                 }
                 let obj = {
                     _id: this.$store.state.user._id,
+                    selectedPath: this.$store.state.user.selectedPath,
                     savedPaths: this.$store.state.user.savedPaths
                 }
                 axios.post('/api/updatesavedpaths', obj, {headers: headers})

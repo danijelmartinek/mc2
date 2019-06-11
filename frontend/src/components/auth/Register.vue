@@ -5,10 +5,10 @@
         <div class="dcol xs-12 ml-6 registerContainer">
             <div class="registerForm">
                 <div class="registerErrors">
-                <h4 v-for="(err, i) in register.errors" :key="i">
-                    {{ err }}
-                </h4>
-                <h4>{{register.status}}</h4>
+                  <h4 v-for="(err, i) in register.errors" :key="i">
+                      {{ err }}
+                  </h4>
+                  <h4>{{register.status}}</h4>
                 </div>
 
                 <div class="xs-12 registerInputs">
@@ -60,7 +60,6 @@
                             :reduce="skola => skola._id" 
                             v-model="register.highSchool" 
                             placeholder="Škola"
-                            required
                         >
                         </v-select>
                     </div>
@@ -191,16 +190,16 @@ export default {
 @import './resetInputsStyle.css';
 
 .dform {
-    min-width: 80%;
-    font-family: 'PublicSans';
-    font-size: 1.2em;
-    caret-color: #FF5E3A;
-    height: 2em;
-    color: #F2F2F0;
-    padding-left: 1em;
-    margin: 0.5em 0em 0.5em 0em;
-    background-color: #2C365D;
-    border-radius: 0.5em !important;
+  min-width: 80%;
+  font-family: 'PublicSans';
+  font-size: 1.2em;
+  caret-color: #FF5E3A;
+  height: 2em;
+  color: #F2F2F0;
+  padding-left: 1em;
+  margin: 0.5em 0em 0.5em 0em;
+  background-color: #2C365D;
+  border-radius: 0.5em !important;
 	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
 }
 .dform::placeholder {
@@ -227,33 +226,18 @@ export default {
   padding: 1em 0em 0em 3em;
 }
 
-/**
- * Reset button styles.
- * It takes a bit of work to achieve a neutral look.
- */
-button {
-  padding: 0;
-  border: none;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
-  /* show a hand cursor on hover; some argue that we
-  should keep the default arrow cursor for buttons */
-  cursor: pointer;
-}
-
 .confirm-btn {
 	color: #F2F2F0;
 	font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-	cursor: pointer;
-	background-color: #FF5E3A;
-    padding: 1em;
-    margin: 0.6em;
-    margin-top: 1.5em;
-	border-radius: 0.5em;
-	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  background-color: #FF5E3A;
+  padding: 1em;
+  margin: 0.6em;
+  margin-top: 1.5em;
+  border-radius: 0.5em;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
 }
 
 .confirm-btn:hover {

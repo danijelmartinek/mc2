@@ -30,7 +30,6 @@
         </div>
         <div class="offset-xs-1 xs-10 offset-m-3 m-6 offset-l-4 l-4">
           <div class="confirm-btn" @click="loginHandler()">Prijavi se</div>
-          <div class="confirm-btn" @click="logout()">Logout</div>
         </div>
         <div class="register offset-xs-1 xs-10 offset-m-3 m-6 offset-l-4 l-4">
           <p>Nisi registriran/a?</p>
@@ -104,10 +103,6 @@ export default {
           }
         })
       }
-    },
-
-    logout(){
-      this.$store.commit('logoutUser')
     }
   }
 }
@@ -151,21 +146,6 @@ export default {
 .loginErrors{
   color: #FF5E3A;
   padding: 1em 0em 0em 3em;
-}
-
-/**
- * Reset button styles.
- * It takes a bit of work to achieve a neutral look.
- */
-button {
-  padding: 0;
-  border: none;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
-  /* show a hand cursor on hover; some argue that we
-  should keep the default arrow cursor for buttons */
-  cursor: pointer;
 }
 
 .confirm-btn {

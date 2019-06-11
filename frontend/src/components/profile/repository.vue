@@ -127,24 +127,30 @@ export default {
     font-weight: bold;
     background-color: #2C365D;
 }
+
 @media only screen and (min-width: 1070px) {
     .subject {
         margin: 5em; 
     }
 }
+
 .subject > .sub{
     margin-left: 1em;
     font-size: 1.2em;
 }
+
 .subject > span > .year{
     padding: 2em 0em 0em 1em;
 }
+
 .subject > span > .files{
     padding: 0.5em 0em 1em 3em;
 }
+
 .file-item{
     padding: 0.3em;
 }
+
 .file-item > span{
     padding-left: 0.5em;
     text-decoration: underline;

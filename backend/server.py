@@ -176,11 +176,46 @@ def dohvatiZanimanja():
 
 
 @app.route('/updatesavedpaths', methods = ['POST'])
-def updateuser():
+def updateuserpath():
     req = request.get_json(force=True)
-    mongo.db.commonUsers.update_one({"_id": ObjectId(req['_id'])}, { "$set": { "savedPaths": req['savedPaths']}})
+    mongo.db.commonUsers.update_one({"_id": ObjectId(req['_id'])}, { "$set": { "selectedPath": req['selectedPath'], "savedPaths": req['savedPaths'] }})
     updated = mongo.db.commonUsers.find_one({"_id": ObjectId(req['_id'])})
     uSession.clearSession()
     uSession.setSession(JSONEncoder().encode(updated))
 
     return JSONEncoder().response({'success': True})
+
+
+
+
+
+@app.route('/changeuserdata', methods = ['POST'])
+def updateuser():
+    req = request.get_json(force=True)
+    reqId = ""
+    reqId = req['_id']
+    req.pop('_id', None)
+
+    if req["password"] is not "":
+        req["password"] = SignUp(uSession, mongo.db.commonUsers).hash_password(req["password"])
+    else:
+        req.pop('password', None)
+
+    mongo.db.commonUsers.update_one({"_id": ObjectId(reqId)}, { "$set": req}, upsert = False)
+    updated = mongo.db.commonUsers.find_one({"_id": ObjectId(reqId)})
+    uSession.clearSession()
+    uSession.setSession(JSONEncoder().encode(updated))
+
+    return JSONEncoder().response({'success': True})
+
+
+@app.route('/getpaths', methods = ['POST'])
+def getsavedpaths():
+    req = request.get_json(force=True)
+    resArray = []
+
+    for i in req:
+        obj = mongo.db.putovi.find_one({"_id": ObjectId(i)})
+        resArray.append(obj)
+
+    return JSONEncoder().response(resArray)
