@@ -75,15 +75,30 @@
             </div>
         </div>
         <modal
-			v-show="isModalVisible"
-			@close="successfullyRegistered()"
-		></modal>
+          v-show="isModalVisible"
+        >
+          <div class="modal">
+            <div>
+                <div style="text-align: center;">
+                    <div style="font-size: 4em; margin: 0.5em 0em 0.5em 0em; color: #FF5E3A;"><font-awesome-icon icon="check" /></div>
+                    <div class="title">Uspješno ste se registrirali!</div>
+                </div>
+                <br>
+                <div>
+
+                    <button class="btn" @click="successfullyRegistered()">
+                        OK
+                    </button>
+                </div>
+            </div>
+          </div>
+        </modal>
 	</div>
 </template>
 
 <script>
 import axios from "axios"
-import modal from "@/components/auth/modal.vue"
+import modal from "@/assets/scripts/modal/modal.vue"
 
 export default {
 	name: 'Register',
@@ -397,6 +412,61 @@ export default {
 .style-chooser >>> .vs__clear,
 .style-chooser >>> .vs__open-indicator {
 	fill: #F2F2F0;
+}
+
+
+
+
+
+.modal {
+    width: 90%;
+    background: #FFFFFF;
+    border-radius: 1em;
+	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (min-width: 710px) {
+	.modal {
+		width: 70%;
+	}
+}
+
+@media only screen and (min-width: 1070px) {
+	.modal {
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 1610px) {
+	.modal {
+		width: 30%;
+	}
+}
+
+
+.title{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #2c365d;
+}
+
+.btn {
+	float: right;
+	width: auto !important;
+	color: #F2F2F0;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+	background-color: #FF5E3A;
+	padding: 1em;
+}
+
+.btn:active {
+	opacity: 0.8;
 }
 </style>
 

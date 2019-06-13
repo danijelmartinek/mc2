@@ -163,6 +163,12 @@ def dohvatiFakultete():
     fakultetiLista = JSONEncoder().response(fakulteti)
     return fakultetiLista
 
+@app.route('/fakultet', methods = ['POST'])
+def dohvatiJedanFakultet():
+    req = request.get_json(force=True)
+    res = mongo.db.fakulteti.find_one({"_id": ObjectId(req['_id'])})
+    return JSONEncoder().response(res)
+
 @app.route('/skole')
 def dohvatiSkole():
     skoleLista = JSONEncoder().response(skole)

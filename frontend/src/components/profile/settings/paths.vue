@@ -124,6 +124,7 @@ export default {
                 .then(res => {
                     if(res.status == 200){
                         this.$store.state.user.selectedPath = ""
+                        this.$store.state.user.selectedStudy = ""
                         this.$store.state.user.selectedPath = []
                     }
                 })
