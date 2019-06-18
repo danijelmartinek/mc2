@@ -1,5 +1,5 @@
 <template>
-    <div id="case4">
+    <div id="profile">
         <navi :items="navItems" v-on:changePage="changePage"></navi>
 		<component class="selectedPage" v-bind:is="compList[page]"></component>
 	</div>   
@@ -7,13 +7,14 @@
 
 <script>
 import navi from "@/components/profile/navigation.vue"
-import deadlines from "@/components/profile/deadlines.vue"
-import college from "@/components/profile/college.vue"
-import profession from "@/components/profile/profession.vue"
-import profile from "@/components/profile/profile.vue"
+import deadlines from "@/components/profile/deadlinesTab/deadlines.vue"
+import college from "@/components/profile/collegeTab/college.vue"
+import profession from "@/components/profile/professionTab/profession.vue"
+import profile from "@/components/profile/profileTab/profile.vue"
 
 export default {
-	name: 'case4',
+	name: 'profile',
+
 	components: {
 		navi,
 		deadlines,
@@ -21,6 +22,7 @@ export default {
 		profession,
 		profile
 	},
+
 	data() {
 		return {
 			navItems: [
@@ -45,6 +47,7 @@ export default {
 			compList: [deadlines, college, profession, profile]
 		}
 	},
+	
 	methods:{
 		changePage(i){
 			this.page = i

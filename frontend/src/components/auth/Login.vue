@@ -9,6 +9,7 @@
           <h4>{{login.status}}</h4>
         </div>
 
+        <div class="xs-12 loginInputs" style="color: #2C365D;"><h1>Prijava</h1></div>
         <div class="xs-12 loginInputs">
           <div>
             <input
@@ -39,15 +40,18 @@
     </div>
 
     <div class="dcol xs-12 ml-6 info">
+      <span class="illustration"><img src="./loginIllustration.svg"></span>
     </div>
 	</div>
 </template>
 
 <script>
 import axios from "axios"
+require('@/assets/css/resetInputsStyle.css')
 
 export default {
   name: 'login',
+
   data() {
     return {
       login: {
@@ -58,6 +62,7 @@ export default {
       }
     }
   },
+
   methods:{
 
     validateEmail(email) {
@@ -82,6 +87,7 @@ export default {
       }
       
     },
+
     loginHandler() {
       let valid = this.loginValidate()
 
@@ -109,7 +115,6 @@ export default {
 </script>
 
 <style scoped>
-@import './resetInputsStyle.css';
 
 .dform {
   min-width: 80%;
@@ -124,6 +129,7 @@ export default {
   border-radius: 0.5em !important;
 	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
 }
+
 .dform::placeholder {
   color: #F2F2F0;
   padding-left: 1em;
@@ -177,14 +183,10 @@ export default {
 	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
-
 .confirm-btn:active {
 	font-size: 0.9em;
 	box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
 }
-
-
-
 
 .loginContainer{
   position: absolute;
@@ -252,6 +254,20 @@ export default {
 .register > span > div:hover{
   color: #fd7d61;
   border: 2px solid #fd7d61;
+}
+
+.illustration > img{
+  position: relative;
+  top: 35%;
+  transform: translateY(-50%);
+  margin: 5em;
+}
+
+@media only screen and (min-width: 1310px) {
+	.illustration > img{
+    top: 25%;
+    margin: 10em;
+  }
 }
 </style>
 

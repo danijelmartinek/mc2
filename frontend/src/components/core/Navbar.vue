@@ -88,13 +88,15 @@ import myPathIconAdd from "@/components/core/myPathIconAdd.vue"
 
 export default {
   name: 'navbar',
+
   components:{
       myPathIconAdd
   },
+
   computed:{
-        checkAuth() {
-            return this.$store.getters.checkAuth
-        },
+    checkAuth() {
+        return this.$store.getters.checkAuth
+    },
   }
 }
 </script>

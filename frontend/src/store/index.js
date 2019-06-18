@@ -10,16 +10,24 @@ export const store = new Vuex.Store({
         user: null,
         selectedOptions: {
             skolaId: "",
+            fakultet: "",
             fakultetId: "",
             smjerId: "",
             zanimanjeId: "",
             slucajOdabira: 0
         },
+        pathOptions: {
+            skole: [],
+            fakulteti: [],
+            zanimanja: []
+        },
         routeHandler: false //handling forward and backward route change, to prevent errors
     },
+
     getters: {
         checkAuth(state) { return state.userAuthenticated }
     },
+
     mutations: {
         logoutUser(state) {
             axios.get("/api/logout")
@@ -31,6 +39,7 @@ export const store = new Vuex.Store({
             })
         }
     },
+    
     actions: {
         resetData(context) {
             context.state.selectedOptions.skolaId = ''
@@ -38,6 +47,30 @@ export const store = new Vuex.Store({
 			context.state.selectedOptions.smjerId = ''
             context.state.selectedOptions.zanimanjeId = ''
             context.state.selectedOptions.slucajOdabira = 0
+        },
+
+        getPathOptions(context) {
+            axios.get('/api/skole')
+            .then(res => {
+                if(res.status == 200){
+                    context.state.pathOptions.skole = res.data
+                }
+            })
+
+            axios.get('/api/fakulteti')
+            .then(res => {
+                if(res.status == 200){
+                    context.state.pathOptions.fakulteti = res.data
+                }
+            })
+
+            axios.get('/api/zanimanja')
+            .then(res => {
+                if(res.status == 200){
+                    context.state.pathOptions.zanimanja = res.data
+                }
+            })
+
         },
 
         authUser(context) {
@@ -48,6 +81,10 @@ export const store = new Vuex.Store({
                         if(res.data.auth == true){
                             context.state.userAuthenticated = true
                             context.state.user = res.data.userData
+                            
+                            if(context.state.user.highSchool){
+                                context.state.selectedOptions.skolaId = context.state.user.highSchool
+                            }
                         }
                         resolve(context.state.userAuthenticated)
                     }, error => {

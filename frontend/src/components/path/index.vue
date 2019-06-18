@@ -56,14 +56,41 @@ export default {
 		}
     },
 
-    beforeMount() {
-        //kod navigacije pomoću 'back' i 'forward' strelica, 
-        //prevencija slanja praznog objekta za generiranje puteva - validacija da prikaz puteva nije prazan objekt
-        if(this.$store.state.routeHandler){
-            this.$router.go(this.$router.currentRoute)
-            this.$store.state.routeHandler = false
-        }
-    },
+    // beforeMount() {
+    //     let selectedOptions = this.$store.state.selectedOptions
+    //     //kod navigacije pomoću 'back' i 'forward' strelica, 
+    //     //prevencija slanja praznog objekta za generiranje puteva - validacija da prikaz puteva nije prazan objekt
+    //     if(this.$store.state.routeHandler && this.$store.state.selectedOptions.slucajOdabira != 0){
+    //         if(this.$store.state.selectedOptions.slucajOdabira == 1){
+
+    //             if(selectedOptions.skolaId == "" && 
+    //             selectedOptions.fakultetId == "" && 
+    //             selectedOptions.smjerId == "" && 
+    //             selectedOptions.zanimanjeId == "") {
+
+    //                 this.$router.go(this.$router.currentRoute)
+    //                 this.$store.state.routeHandler = false
+    //             }
+    //         } else if(this.$store.state.selectedOptions.slucajOdabira == 2){
+
+    //             if(selectedOptions.skolaId == "" && 
+    //             selectedOptions.zanimanjeId == "") {
+
+    //                 this.$router.go(this.$router.currentRoute)
+    //                 this.$store.state.routeHandler = false
+    //             }
+    //         } else if(this.$store.state.selectedOptions.slucajOdabira == 3){
+
+    //             if(selectedOptions.skolaId == "" && 
+    //             selectedOptions.fakultetId == "" && 
+    //             selectedOptions.smjerId == "") {
+
+    //                 this.$router.go(this.$router.currentRoute)
+    //                 this.$store.state.routeHandler = false
+    //             }
+    //         }
+    //     }
+    // },
 
     mounted() {
         this.$store.state.routeHandler = true //učitana finalna ruta generiranja puteva
@@ -442,6 +469,7 @@ export default {
     z-index: 999;
     cursor: pointer;
 }
+
 .fab:hover{
     background-color: #2C365D;
     opacity: 0.8;
@@ -460,6 +488,7 @@ export default {
     background-color: #FF5E3A;
     box-shadow: 0px 0px 40px 2px rgb(255, 94, 58, 0.5);
 }
+
 .fabselected:hover{
     background-color: #FF5E3A;
     opacity: 0.8;

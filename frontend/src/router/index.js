@@ -65,7 +65,7 @@ export default new Router({
       path: "/profile",
       name: "Profile",
       component: Profile,
-      beforeEnter: authMiddleware
+      beforeEnter: authMiddleware //korisnik treba biti prijavljen
     }
   ]
 });

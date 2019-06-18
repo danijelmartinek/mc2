@@ -6,13 +6,11 @@ from bson import ObjectId
 import datetime
 import time
 
-
 from api.mainModule import mainAlgorithm
 from api.secondModule import secondAlgorithm
 from api.thirdModule import thirdAlgorithm
 
 from api.auth import Auth, SignUp
-
 
 
 
@@ -44,6 +42,20 @@ uSession = Auth(app)
 uSession.config(3600)
 
 
+
+def konverzija(kolekcija):  #vraća listu s traženim objektima iz baze podataka
+    lista = []
+    for x in kolekcija.find():
+        lista.append(x)
+    return lista
+
+skole = konverzija(mongo.db.skole)
+fakulteti = konverzija(mongo.db.fakulteti)
+zanimanja = konverzija(mongo.db.zanimanja)
+tvrtke = konverzija(mongo.db.tvrtke)
+
+
+#auth rute
 @app.route('/register', methods = ['POST'])
 def userRegister():
     data = request.get_json(force = True)
@@ -74,27 +86,12 @@ def checkSession():
 
 
 
-
-
-def konverzija(kolekcija):  #vraća listu s traženim objektima iz baze podataka
-    lista = []
-    for x in kolekcija.find():
-        lista.append(x)
-    return lista
-
-skole = konverzija(mongo.db.skole)
-fakulteti = konverzija(mongo.db.fakulteti)
-zanimanja = konverzija(mongo.db.zanimanja)
-
-
-
 # glavne rute za generiranje puteva
 @app.route('/gencaseone', methods = ['POST'])
 def generiranjePutova1():
     req = request.get_json(force=True)
     res = mainAlgorithm(mongo.db.putovi, skole, fakulteti, zanimanja, req).izlaz()
     return JSONEncoder().response([res])
-
 
 
 @app.route('/gencasetwo', methods = ['POST'])
@@ -113,7 +110,6 @@ def generiranjePutova2():
         listaPuteva.append(put)
 
     return JSONEncoder().response(listaPuteva)
-
 
 
 @app.route('/gencasethree', methods = ['POST'])
@@ -135,7 +131,8 @@ def generiranjePutova3():
 
 
 
-#ruta za preuzimanje podataka vezanih za generiranu rutu
+
+#ruta za preuzimanje podataka vezanih za generirani put
 @app.route('/getstepdata', methods = ['POST'])
 def sendStepData():
     req = request.get_json(force=True)
@@ -154,6 +151,7 @@ def sendStepData():
     }
     
     return JSONEncoder().response(res)
+
 
 
 
@@ -179,8 +177,27 @@ def dohvatiZanimanja():
     zanimanjaLista = JSONEncoder().response(zanimanja)
     return zanimanjaLista
 
+@app.route('/zanimanje', methods = ['POST'])
+def dohvatiJedanoZanimanje():
+    req = request.get_json(force=True)
+    res = mongo.db.zanimanja.find_one({"_id": ObjectId(req['_id'])})
+    return JSONEncoder().response(res)
+
+@app.route('/getpaths', methods = ['POST'])
+def getsavedpaths():
+    req = request.get_json(force=True)
+    resArray = []
+
+    for i in req:
+        obj = mongo.db.putovi.find_one({"_id": ObjectId(i)})
+        resArray.append(obj)
+
+    return JSONEncoder().response(resArray)
 
 
+
+
+#rute za ažuriranje podataka
 @app.route('/updatesavedpaths', methods = ['POST'])
 def updateuserpath():
     req = request.get_json(force=True)
@@ -190,9 +207,6 @@ def updateuserpath():
     uSession.setSession(JSONEncoder().encode(updated))
 
     return JSONEncoder().response({'success': True})
-
-
-
 
 
 @app.route('/changeuserdata', methods = ['POST'])
@@ -215,13 +229,17 @@ def updateuser():
     return JSONEncoder().response({'success': True})
 
 
-@app.route('/getpaths', methods = ['POST'])
-def getsavedpaths():
+
+
+@app.route('/getcompanies', methods = ['GET','POST'])
+def getcompanies():
     req = request.get_json(force=True)
-    resArray = []
+    zanimanjeId = req['zanimanjeId']
+    kompatibilneTvrtke = []
 
-    for i in req:
-        obj = mongo.db.putovi.find_one({"_id": ObjectId(i)})
-        resArray.append(obj)
+    for t in tvrtke:
+        for djelatnost in t['djelatnosti']:
+            if djelatnost['_id'] == zanimanjeId:
+                kompatibilneTvrtke.append(t)
 
-    return JSONEncoder().response(resArray)
+    return JSONEncoder().response(kompatibilneTvrtke)

@@ -34,9 +34,19 @@ export default {
   },
 
   mounted(){
-    this.$emit('stepClicked', 0)
-
-    document.getElementsByTagName("input")[0].setAttribute("checked", "true")
+    if(this.$store.state.selectedOptions.slucajOdabira == 3) {
+      this.$emit('stepClicked', 2)
+      document.getElementsByTagName("input")[2].setAttribute("checked", "true")
+      this.step = 2
+    } else if(this.$store.state.selectedOptions.slucajOdabira == 2) {
+      this.$emit('stepClicked', 1)
+      document.getElementsByTagName("input")[1].setAttribute("checked", "true")
+      this.step = 1
+    } else {
+      this.$emit('stepClicked', 1)
+      document.getElementsByTagName("input")[1].setAttribute("checked", "true")
+      this.step = 1
+    }
   },
 
 	methods: {

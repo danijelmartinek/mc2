@@ -9,7 +9,7 @@
 					<v-select 
 						class="style-chooser" 
 						label="naziv" 
-						:options="skole" 
+						:options="$store.state.pathOptions.skole" 
 						:reduce="skola => skola._id" 
 						v-model="$store.state.selectedOptions.skolaId" 
 						placeholder="Odaberite svoju školu"
@@ -25,8 +25,8 @@
 					<v-select 
 						class="style-chooser" 
 						label="naziv" 
-						:options="fakulteti" 
-						v-model="college" 
+						:options="$store.state.pathOptions.fakulteti" 
+						v-model="college"
 						placeholder="Odaberite željeni fakultet"
 						@input="refresh('fakultetId')"
 					>
@@ -58,40 +58,25 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
 	name: 'case3',
-	
+
 	data() {
 		return {
-			skole: [],
-			fakulteti: [],
 			college: '',
 			collegeSelected: false,
 		}
 	},
 
 	beforeMount(){
-		this.$store.dispatch('resetData') //na svakom učitavanju stranice, podaci se resetiraju
+		//this.$store.dispatch('resetData') //na svakom učitavanju stranice, podaci se resetiraju
 	},
 
 	mounted() {
 		this.$store.state.selectedOptions.slucajOdabira = 3
 
-		axios.get('/api/skole')
-		.then(res => {
-			if(res.status == 200){
-				this.skole = res.data
-			}
-		})
-
-		axios.get('/api/fakulteti')
-		.then(res => {
-			if(res.status == 200){
-				this.fakulteti = res.data
-			}
-		})
+		this.college = this.$store.state.selectedOptions.fakultet
 	},
 
 	methods: {
@@ -100,7 +85,6 @@ export default {
 
 			if(this.college){
 				this.collegeSelected = true
-				// this.$store.state.selectedOptions.smjerId = ""
 				this.$store.state.selectedOptions.fakultetId = this.college._id
 			}
 		},
@@ -125,9 +109,10 @@ export default {
 	watch: {
 		college: function() {
 			this.onCollegeSelect()
+			this.$store.state.selectedOptions.fakultet = this.college
 		}
 	},
-
+	
 	computed: {
 		validator() { //provjera jesu li svi podaci odabrani
 			let obj = this.$store.state.selectedOptions

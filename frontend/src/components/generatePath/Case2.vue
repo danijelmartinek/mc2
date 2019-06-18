@@ -9,7 +9,7 @@
 					<v-select 
 						class="style-chooser" 
 						label="naziv" 
-						:options="skole" 
+						:options="$store.state.pathOptions.skole" 
 						:reduce="skola => skola._id" 
 						v-model="$store.state.selectedOptions.skolaId" 
 						placeholder="Odaberite svoju školu"
@@ -25,7 +25,7 @@
 					<v-select 
 						class="style-chooser" 
 						label="naziv" 
-						:options="zanimanja" 
+						:options="$store.state.pathOptions.zanimanja" 
 						:reduce="zanimanje => zanimanje._id" 
 						v-model="$store.state.selectedOptions.zanimanjeId" 
 						placeholder="Odaberite željeno zanimanje"
@@ -41,38 +41,22 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
 	name: 'case2',
 
 	data() {
 		return {
-			skole: [],
-			zanimanja: []
+
 		}
 	},
 
 	beforeMount(){
-		this.$store.dispatch('resetData') //na svakom učitavanju stranice, podaci se resetiraju
+		//this.$store.dispatch('resetData') //na svakom učitavanju stranice, podaci se resetiraju
 	},
 
 	mounted() {
 		this.$store.state.selectedOptions.slucajOdabira = 2
-
-		axios.get('/api/skole')
-		.then(res => {
-			if(res.status == 200){
-				this.skole = res.data
-			}
-		})
-
-		axios.get('/api/zanimanja')
-		.then(res => {
-			if(res.status == 200){
-				this.zanimanja = res.data
-			}
-		})
 	},
 
 	methods: {

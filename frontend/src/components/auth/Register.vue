@@ -1,6 +1,7 @@
 <template>
 	<div id="register" class="drow">
         <div class="dcol xs-12 ml-6 info">
+          <span class="illustration"><img src="./registerIllustration.svg"></span>
         </div>
         <div class="dcol xs-12 ml-6 registerContainer">
             <div class="registerForm">
@@ -10,7 +11,8 @@
                   </h4>
                   <h4>{{register.status}}</h4>
                 </div>
-
+                
+                <div class="xs-12 registerInputs" style="color: #2C365D;"><h1>Registracija</h1></div>
                 <div class="xs-12 registerInputs">
                     <div>
                         <input
@@ -99,15 +101,18 @@
 <script>
 import axios from "axios"
 import modal from "@/assets/scripts/modal/modal.vue"
+require('@/assets/css/resetInputsStyle.css')
 
 export default {
-	name: 'Register',
+  name: 'Register',
+  
 	components: {
 		modal,
-	},
+  },
+  
   data() {
     return {
-        isModalVisible: false,
+        isModalVisible: false, //modal koji se otvori nakon registracije
         skole: [],
         register: {
             email: null,
@@ -121,14 +126,18 @@ export default {
         }
     };
   },
+
   mounted(){
-    axios.get('/api/skole')
+
+    axios.get('/api/skole') // preuzima listu škola i stavlja u odabir
     .then(res => {
         if(res.status == 200){
             this.skole = res.data
         }
     })
+
   },
+
   methods: {
     validateEmail(email) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -176,7 +185,7 @@ export default {
       }
 
       if(valid) {
-        axios.post("/api/register", registerUserData)
+        axios.post("/api/register", registerUserData) //spremanje podataka novog korisnika i autentikacija toga korisnika
         .then(res => {
           if (res.data.auth == true) {
             this.$store.dispatch('authUser')
@@ -192,7 +201,7 @@ export default {
 		successfullyRegistered() {
 			this.isModalVisible = false
 
-			this.$router.push({
+			this.$router.push({ //preusmjeravanje na početnu stranicu
 				name: "Start"
 			})
 	
@@ -202,7 +211,6 @@ export default {
 </script>
 
 <style scoped>
-@import './resetInputsStyle.css';
 
 .dform {
   min-width: 80%;
@@ -467,6 +475,20 @@ export default {
 
 .btn:active {
 	opacity: 0.8;
+}
+
+.illustration > img{
+  position: relative;
+  top: 35%;
+  transform: translateY(-50%);
+  margin: 5em;
+}
+
+@media only screen and (min-width: 1310px) {
+	.illustration > img{
+    top: 25%;
+    margin: 10em;
+  }
 }
 </style>
 

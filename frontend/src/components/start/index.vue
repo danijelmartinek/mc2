@@ -1,11 +1,11 @@
 <template>
     <div id="start">
-			<span class="bg"></span>
-			<transition-group tag="div" class="comp-slider" :name="transitionDirection">
-				<div v-for="n in [currentComp]" v-bind:key="n">
-					<component v-on:stepSlidePlus="slidePlus" v-on:stepSlideMinus="slideMinus" v-bind:is="compList[n]"></component>
-				</div>
-			</transition-group>
+		<span class="bg"></span>
+		<transition-group tag="div" class="comp-slider" :name="transitionDirection">
+			<div v-for="n in [currentComp]" v-bind:key="n">
+				<component v-on:stepSlidePlus="slidePlus" v-on:stepSlideMinus="slideMinus" v-bind:is="compList[n]"></component>
+			</div>
+		</transition-group>
 	</div>   
 </template>
 
@@ -15,10 +15,12 @@ import next from "@/components/start/Next.vue"
 
 export default {
 	name: 'start',
+
 	components: {
 		start,
 		next
 	},
+
 	data() {
 		return {
 			message: 'Click for slide',
@@ -28,6 +30,7 @@ export default {
 			transitionDirection: 'slide'
 		}
 	},
+
 	methods: {
 		slidePlus(){
 			this.transitionDirection = 'slide'
@@ -62,9 +65,11 @@ export default {
 .slide-enter-active {
 	transition: 0.5s;
 }
+
 .slide-enter {
 	transform: translate(100%, 0);
 }
+
 .slide-leave-to {
 	transform: translate(-100%, 0);
 }
@@ -77,6 +82,7 @@ export default {
 .slideBack-enter {
 	transform: translate(-100%, 0);
 }
+
 .slideBack-leave-to {
 	transform: translate(100%, 0);
 }

@@ -17,20 +17,24 @@
 <script>
 export default {
     name: 'navigation',
+
     props: ['items'],
+
 	data() {
 		return {
             elements: document.getElementsByClassName('item'),
             selectedItem: 0
 		}
     },
+
     mounted(){
         this.select(0)
 
         this.initStyle()
     },
+
     methods: {
-        select(i){
+        select(i){ //mijenja se stil selektiranog tab-a
             this.resetSelect(this.selectedItem)
             
             this.elements[i].classList.add("item-selected")
@@ -52,6 +56,7 @@ export default {
 
         resetSelect(selectedIndex){
 
+            //stil selektiranog tab-a se briše
             this.elements[selectedIndex].classList.remove("item-selected")
 
             if(selectedIndex > 0){
@@ -69,7 +74,7 @@ export default {
 
         initStyle(){
 
-            function widthHandler() {
+            function widthHandler() { //ovisno o broju tab-a, prilagođava se style
                 x = window.matchMedia("(min-width: 1070px)")
                 let items = document.getElementsByClassName('item')
 

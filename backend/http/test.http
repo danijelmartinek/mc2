@@ -8,12 +8,11 @@ content-type: application/json
 
 ###
 
-POST http://localhost:5000/updatesavedpaths HTTP/1.1
+POST http://localhost:5000/getcompanies HTTP/1.1
 content-type: application/json
 
 {
-    "_id": "5cf97751b1d7a1db3be4afc3",
-    "savedPaths": ["wfsdgfrdger"]
+    "zanimanjeId": "5cf03e2793ee885981d515ff"
 }
 
 ###

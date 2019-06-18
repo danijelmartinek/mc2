@@ -29,19 +29,19 @@ class Auth:
     def __init__(self, app):
         self.app = app
 
-    def config(self, sessionLifetime):
-        self.app.config["SESSION_TYPE"] = 'redis'
+    def config(self, sessionLifetime): #konfiguracija sesije
+        self.app.config["SESSION_TYPE"] = 'redis' #za spremanje sesije - redis
         self.app.config["SECRET_KEY"] = os.urandom(24)
         self.app.config["SESSION_PERMANENT"] = False
         self.app.config["PERMANENT_SESSION_LIFETIME"] = sessionLifetime
         Session(self.app)
 
         
-    def setSession(self, userData):
+    def setSession(self, userData): #postavljanje sesije
         session['sessionUser'] = userData
         return {'auth': True, 'userData': json.loads(userData)}
 
-    def getSession(self):
+    def getSession(self): #provjera sesije
         data = session.get('sessionUser')
 
         if data:
@@ -50,7 +50,7 @@ class Auth:
             self.clearSession() #preventing sending empty session key to browser
             return jsonify({'auth': False})
 
-    def clearSession(self):
+    def clearSession(self): #brisanje sesije
         session.clear()
         return jsonify({'authCleared': True})
 
@@ -121,7 +121,7 @@ class SignUp:
 
 
 
-    def hash_password(self, password):
+    def hash_password(self, password): #enkripcija lozinke
 
         salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
         pwdhash = hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'), salt, 100000)
@@ -129,7 +129,7 @@ class SignUp:
         return (salt + pwdhash).decode('ascii')
 
 
-    def verify_password(self, stored_password, provided_password):
+    def verify_password(self, stored_password, provided_password): #provjera lozinke
 
         salt = stored_password[:64]
         stored_password = stored_password[64:]

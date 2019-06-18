@@ -10,9 +10,12 @@ import navbar from './components/core/Navbar.vue'
 
 export default {
   name: 'app',
+
   components: { navbar },
+  
   created() {
-		this.$store.dispatch('authUser')
+    this.$store.dispatch('authUser')
+    this.$store.dispatch('getPathOptions')
 	}
 }
 </script>

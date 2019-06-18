@@ -9,7 +9,7 @@
 					<v-select 
 						class="style-chooser" 
 						label="naziv" 
-						:options="skole" 
+						:options="$store.state.pathOptions.skole" 
 						:reduce="skola => skola._id" 
 						v-model="$store.state.selectedOptions.skolaId" 
 						placeholder="Odaberite svoju školu"
@@ -25,7 +25,7 @@
 					<v-select 
 						class="style-chooser" 
 						label="naziv" 
-						:options="fakulteti" 
+						:options="$store.state.pathOptions.fakulteti" 
 						v-model="college" 
 						placeholder="Odaberite željeni fakultet"
 						@input="refresh('fakultetId')"
@@ -58,7 +58,7 @@
 					<v-select 
 						class="style-chooser" 
 						label="naziv" 
-						:options="zanimanja" 
+						:options="$store.state.pathOptions.zanimanja" 
 						:reduce="zanimanje => zanimanje._id" 
 						v-model="$store.state.selectedOptions.zanimanjeId" 
 						placeholder="Odaberite željeno zanimanje"
@@ -74,48 +74,25 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
 	name: 'case1',
 
 	data() {
 		return {
-			skole: [],
-			fakulteti: [],
-			zanimanja: [],
 			college: '',
 			collegeSelected: false,
 		}
 	},
 
 	beforeMount(){
-		this.$store.dispatch('resetData') //na svakom učitavanju stranice, podaci se resetiraju
+		//this.$store.dispatch('resetData') //na svakom učitavanju stranice, podaci se resetiraju
 	},
 
 	mounted() {
 		this.$store.state.selectedOptions.slucajOdabira = 1
 
-		axios.get('/api/skole')
-		.then(res => {
-			if(res.status == 200){
-				this.skole = res.data
-			}
-		})
-
-		axios.get('/api/fakulteti')
-		.then(res => {
-			if(res.status == 200){
-				this.fakulteti = res.data
-			}
-		})
-
-		axios.get('/api/zanimanja')
-		.then(res => {
-			if(res.status == 200){
-				this.zanimanja = res.data
-			}
-		})
+		this.college = this.$store.state.selectedOptions.fakultet
 	},
 
 	methods: {
@@ -124,7 +101,6 @@ export default {
 
 			if(this.college){
 				this.collegeSelected = true
-				this.$store.state.selectedOptions.smjerId = ""
 				this.$store.state.selectedOptions.fakultetId = this.college._id
 			}
 		},
@@ -149,6 +125,7 @@ export default {
 	watch: {
 		college: function() {
 			this.onCollegeSelect()
+			this.$store.state.selectedOptions.fakultet = this.college
 		}
 	},
 	
